@@ -1,7 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const authRouter = require("./router/auth");
+const route = require("./router/index")
+
+const app = express();
+app.use(express.json());
+
+route(app)
 
 const connectDB = async () => {
   try {
@@ -15,22 +20,11 @@ const connectDB = async () => {
       }
     );
     console.log("MongoDB connected");
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => console.log(`serve started on PORT ${PORT}`));
   } catch (error) {
     console.log(error.message);
     process.exit(1);
   }
 };
-
 connectDB();
-
-const app = express();
-app.use(express.json())
-
-app.get("/", (req, res) => {
-    res.send("hello world")
-})
-app.use("/api/auth", authRouter);
-
-const PORT = 3000;
-
-app.listen(PORT, () => console.log(`serve started on PORT ${PORT}`));
