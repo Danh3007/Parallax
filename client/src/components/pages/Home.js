@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";

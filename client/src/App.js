@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
 import Page from "./components/pages/Home";
 import Auth from "./components/auths/HomeAuth"
