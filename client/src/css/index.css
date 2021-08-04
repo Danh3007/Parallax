@@ -16,3 +16,6 @@ html {
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
+.btn:hover {
+  opacity: 0.8;
+}

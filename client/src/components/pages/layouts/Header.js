@@ -22,10 +22,10 @@ class header extends Component {
           <form className="form-inline my-2 my-lg-0">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link className="nav-link" to="/auth/login">Login</Link>
+                <Link className="nav-link" to="/auth">Login</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/auth/register">Register</Link>
+                <Link className="nav-link" to="/auth">Register</Link>
               </li>
             </ul>
           </form>
