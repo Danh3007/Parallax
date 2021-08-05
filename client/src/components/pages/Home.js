@@ -5,6 +5,7 @@ import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import TrangChu from "./pages/TrangChu";
 import About from "./pages/About";
+import Banner from "./pages/Banner";
 
 
 class Home extends Component {
@@ -12,6 +13,7 @@ class Home extends Component {
     return (
       <div>
         <Header />
+        <Banner />
         <Switch>
             <Route path="/about" component={About} />
             <Route path="/" component={TrangChu} />

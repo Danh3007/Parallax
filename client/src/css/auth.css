@@ -297,3 +297,13 @@
 .headerAuth .container {
     height: 100%;
 }
+
+.form-control.invalid {
+    border-color: red;
+}
+.form-message {
+    color: red;
+    font-size: 1.4rem;
+}
+
+

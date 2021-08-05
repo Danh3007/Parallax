@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
-import Logo from "./../../../images/logo1.png" // eslint-disable-line
+import Logo from "./../../../images/logo.png" // eslint-disable-line
 class HeaderAuth extends Component {
     render() {
         return (
