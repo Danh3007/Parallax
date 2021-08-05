@@ -11,7 +11,7 @@ route(app)
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://admin:admin@cluster0.22ser.mongodb.net/reyleigh?retryWrites=true&w=majority",
+      "mongodb+srv://admin:admin@cluster0.22ser.mongodb.net/parallax?retryWrites=true&w=majority",
       {
         useCreateIndex: true,
         useNewUrlParser: true,
