@@ -100,7 +100,7 @@ class Home extends Component {
         return (
             <div>
                 <HeaderAuth />
-                <div className="Auth">
+                <main className="Auth">
                     <div className="formAuth sign-in">
                         <h2>Chào Mừng Quay Lại,</h2>
                         <form action="" method="POST" id="form-login">
@@ -156,7 +156,7 @@ class Home extends Component {
                             </form>
                         </div>
                     </div>
-                </div>
+                </main>
                 <FooterAuth />
             </div>
         );

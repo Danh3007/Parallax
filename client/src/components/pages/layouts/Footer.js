@@ -40,7 +40,7 @@ class footer extends Component {
                         <div className="container">
                         <div className="row">
                             <div className="col-lg-12 col-md-12">
-                            <p className="company-name">© 2020 Bản quyền của <span className="fas fa-angle"> HDC </span> Design By :
+                            <p className="company-name">© 2021 Bản quyền của <span className="fas fa-angle"> HDC </span> Design By :
                             <span className="fas fa-angle"> HDC </span></p>
                             </div>
                         </div>

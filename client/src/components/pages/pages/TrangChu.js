@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
+import Banner from "./Banner";
+
 class TrangChu extends Component {
   render() {
     return (
-      <div>
+      <main>
+        <Banner />
         <h1>Trang chu</h1>
-      </div>
+      </main>
     );
   }
 }

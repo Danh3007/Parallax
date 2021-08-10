@@ -39,6 +39,9 @@ class header extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/auth"><p>Đăng nhập</p></Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/me"><p>Quản lí</p></Link>
+              </li>
             </ul>
           </div>
 
