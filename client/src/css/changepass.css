@@ -1,0 +1,23 @@
+.h3bank_change_add_me_home{
+    margin-top: 50px;
+}
+hr{
+    margin-bottom: 35px;
+}
+.inputchange input{
+    width: 350px;
+    height: 30px;
+    font-size: 15px;
+}
+label{
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+   
+}
+.form-inline{
+    margin-bottom: 40px;
+}
+button{
+    margin-right: 40px;
+}

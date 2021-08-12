@@ -1,0 +1,21 @@
+.me{
+    font-size: 15px;
+    color: rgb(100, 100, 100);
+}
+.input1{
+    font-size: 15px;
+    width: 350px;
+    height: 30px;
+    
+}
+.form-inline label{
+    margin-right: 20px;
+}
+p{
+    font-size: 15px;
+}
+.ngaysinh{
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+}

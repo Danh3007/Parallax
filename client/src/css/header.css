@@ -133,8 +133,8 @@ header .navigation p:hover{
         right: -10px;
         top: 60px;
         margin-right: 10px;
-        min-height: 40%;
-        height: calc(40% - 60px);
+        min-height: 32%;
+        height: calc(32% - 60px);
         border-radius: 2px 0px 0px 2px;
         background-color: #ffffff!important;
         display: flex;
