@@ -2,108 +2,45 @@ import React, { Component } from "react";
 import Banner from "./Banner";
 
 class TrangChu extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      products : [
+        {id: 1, nameProduct: "THỜI TRANG", imgsrc: "card1"},
+        {id: 2, nameProduct: "BALO - TÚI", imgsrc: "card2"},
+        {id: 3, nameProduct: "GIÀY - DÉP", imgsrc: "card3"},
+        {id: 4, nameProduct: "TRANG SỨC & PHỤ KIỆN", imgsrc: "card4"},
+        {id: 5, nameProduct: "THỜI TRANG TRẺ EM", imgsrc: "card5"},
+        {id: 6, nameProduct: "MẸ & BÉ", imgsrc: "card6"},
+        {id: 7, nameProduct: "THIẾT BỊ ĐIỆN TỬ", imgsrc: "card7"},
+        {id: 8, nameProduct: "SỨC KHỎE	& GIA ĐÌNH", imgsrc: "card8"},
+        {id: 9, nameProduct: "LÀM ĐẸP", imgsrc: "card9"},
+        {id: 10, nameProduct: "ĐỒ CHƠI", imgsrc: "card10"},
+        {id: 11, nameProduct: "NHÀ SÁCH", imgsrc: "card11"},
+        {id: 12, nameProduct: "THIẾT BỊ GIA DỤNG", imgsrc: "card12"},
+        {id: 13, nameProduct: "NHÀ CỬA & ĐỜI SỐNG", imgsrc: "card13"},
+        {id: 14, nameProduct: "THỂ THAO & DU LỊCH", imgsrc: "card14"},
+        {id: 15, nameProduct: "VĂN PHÒNG PHẨM", imgsrc: "card15"},
+        {id: 16, nameProduct: "BÁCH HÓA ONLINE", imgsrc: "card16"},
+      ]
+    }
+  }
+  
   render() {
+    let elements = this.state.products.map((product) => {
+      return  <li key={product.id}>
+                <div className={"card "+product.imgsrc}>
+                  <p className="card-img-top"/>
+                  <h6 className="card-title">{product.nameProduct}</h6>
+                </div>
+              </li>
+    })
     return (
       <main className="container">
         <Banner />
         <div>
           <ul className="danhmuc">
-            <li>
-              <div className="card card1">
-                <p className="card-img-top"/>
-                <h6 className="card-title">THỜI TRANG</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card2">
-                <p className="card-img-top"/>
-                <h6 className="card-title">BALO - TÚI</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card3">
-                <p className="card-img-top"/>
-                <h6 className="card-title">GIÀY - DÉP</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card4">
-                <p className="card-img-top"/>
-                <h6 className="card-title">TRANG SỨC &amp; PHỤ KIỆN</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card5">
-                <p className="card-img-top"/>
-                <h6 className="card-title">THỜI TRANG TRẺ EM</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card6">
-                <p className="card-img-top"/>
-                <h6 className="card-title">MẸ &amp; BÉ</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card7">
-                <p className="card-img-top"/>
-                <h6 className="card-title">THIẾT BỊ ĐIỆN TỬ</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card8">
-                <p className="card-img-top"/>
-                <h6 className="card-title">SỨC KHỎE	&amp; GIA ĐÌNH</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card9">
-                <p className="card-img-top"/>
-                <h6 className="card-title">LÀM ĐẸP</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card10">
-                <p className="card-img-top"/>
-                <h6 className="card-title">ĐỒ CHƠI</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card11">
-                <p className="card-img-top"/>
-                <h6 className="card-title">NHÀ SÁCH</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card12">
-                <p className="card-img-top"/>
-                <h6 className="card-title">THIẾT BỊ GIA DỤNG</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card13">
-                <p className="card-img-top"/>
-                <h6 className="card-title">NHÀ CỬA &amp; ĐỜI SỐNG</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card14">
-                <p className="card-img-top"/>
-                <h6 className="card-title">THỂ THAO &amp; DU LỊCH</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card15">
-                <p className="card-img-top"/>
-                <h6 className="card-title">VĂN PHÒNG PHẨM</h6>
-              </div>
-            </li>
-            <li>
-              <div className="card card16">
-                <p className="card-img-top"/>
-                <h6 className="card-title">BÁCH HÓA ONLINE</h6>
-              </div>
-            </li>
+            {elements}
           </ul>
         </div>
       </main>
