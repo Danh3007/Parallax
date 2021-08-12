@@ -117,6 +117,7 @@ class Home extends Component {
                             <p className="forgot-pass">Quên Mật Khẩu?</p>
                             <button onClick={this.onSubmitAuth} type="submit" className="btn btn-login">Đăng Nhập</button>
                             <button type="button" className="btn btn-fb">Kết nối với Facebook</button>
+                            <div onClick={this.onChaneAuth} type="button" className="btn Change__mobie">Đăng kí tài khoản</div>
                         </form>
                     </div>
                     <div className="sub-Auth">
@@ -153,6 +154,7 @@ class Home extends Component {
                                     <span className="form-message"></span>
                                 </div>
                                 <button onClick={this.onSubmitAuth} type="submit" className="btn btn-register">Đăng Kí</button>
+                                <button onClick={this.onChaneAuth} type="button" className="btn Change__mobie">Đăng nhập tài khoản</button>
                             </form>
                         </div>
                     </div>

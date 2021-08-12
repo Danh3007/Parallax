@@ -1,10 +1,6 @@
-
-@import url('http://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-
-
-
 .danhmuc{
     margin-top: 1%;
+    width: 100%;
 }
 .danhmuc li{
     display:inline-block;
@@ -14,7 +10,6 @@
     text-align: center;
 }
 .card{
-    
     background-color: #f8f9fa!important;
     height:160px;
 }
@@ -82,8 +77,11 @@
     background: url(../images/list16.png);
 }
 
-/* RESPONSIVE DESKTOP */
-@media (max-width: 991px) {
+/* RESPONSIVE Tablet */
+@media (max-width: 991.5px) {
+    .danhmuc li {
+        width: 16.6%;
+    }
     .card{
         height:110px;
     }
@@ -96,23 +94,11 @@
     }
 }
 
-@media (max-width: 768px) {
-    .card{
-        height:90px;
-    }
-    .card .card-img-top{
-        background-size: 50px;
-        margin-top: -10px;
-    }
-    .card .card-title{
-        position: relative;
-        top: -8px;
-    }
-    
-}
-
 /* RESPONSIVE MOBILE */
-@media (max-width: 480px) {
+@media (max-width: 767.5px) {
+    .danhmuc li {
+        width: 25%;
+    }
     .card{
         height: 55px;
     }

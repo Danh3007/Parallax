@@ -1,4 +1,23 @@
+/* HeaderAuth */
+.headerAuth {
+    background-color: #ffffff;
+    padding: 20px 0px;
+    z-index: 1000;
+}
+.logoAuth {
+    width: 200px;
+    min-width: 80px;
+}
+.txtAuth {
+    font-size: 2.6rem;
+    vertical-align: bottom;
+    margin-left: 20px;
+}
+.headerAuth .container {
+    height: 100%;
+}
 
+/* Body */
 .Auth {
     border-radius: 20px;
     overflow: hidden;
@@ -73,6 +92,18 @@
     color: var(--white-color);
     background-color: blue;
     font-size: 15px;
+}
+.Change__mobie {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #000;
+    background-image: linear-gradient(0,rgb(1, 204, 255),#fff);
+    font-size: 15px;
+    justify-content: center;
+    display: none;
 }
 
 .effect {
@@ -281,23 +312,6 @@
     transform: translate3d(0, 0, 0);
 }
 
-.logoAuth {
-    width: 200px;
-    min-width: 80px;
-}
-.txtAuth {
-    font-size: 2.6rem;
-    vertical-align: bottom;
-    margin-left: 20px;
-}
-.headerAuth {
-    background-color: #f8f9fa;
-    width: 100%;
-}
-.headerAuth .container {
-    height: 100%;
-}
-
 .form-control.invalid {
     border-color: red;
 }
@@ -306,4 +320,51 @@
     font-size: 1.4rem;
 }
 
+@media (max-width: 991.5px) {
+    .Auth,
+    .sub-Auth{
+        width: 660px;
+    }
+    .Auth.s--signup .sub-Auth {
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
+    }
+    .sub-Auth {
+        left: 450px;
+        padding-left: 210px;
+    }
+    .formAuth {
+        width: 450px;
+    }
+    .effect {
+        width: 210px;
+    }
+    .Auth h2 {
+        font-size: 2.2rem;
+    }
+    .effect__text p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+@media (max-width: 767.5px) {
+    .Auth,
+    .sub-Auth{
+        width: 450px;
+    }
+    .Auth.s--signup .sub-Auth {
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
+    }
+    .sub-Auth {
+        left: 450px;
+        padding-left: 0px;
+    }
+    .effect {
+        display: none;
+    }
+    .Change__mobie {
+        display: block;
+    }
+}
 
