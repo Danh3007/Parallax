@@ -2,7 +2,7 @@
 .headerAuth {
     background-color: #ffffff;
     padding: 20px 0px;
-    z-index: 1000;
+    z-index: 30072001;
 }
 .logoAuth {
     width: 200px;
@@ -351,6 +351,7 @@
     .Auth,
     .sub-Auth{
         width: 450px;
+        height: 600px;
     }
     .Auth.s--signup .sub-Auth {
         -webkit-transform: translate3d(-450px, 0, 0);
