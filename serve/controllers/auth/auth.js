@@ -2,19 +2,53 @@
 const Account = require("./../../models/account")
 
 class Auth {
-    getLogin(req, res) {
-        res.send("danh")
+    async getLogin(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        let account = await Account.findOne({email: req.body.email})
+        if (account != null) {
+            res.json(account)
+        }
     }
-    postLogin(req, res) {
-        res.send("danh")
+    async postLogin(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        let account = await Account.findOne({email: req.body.email, password: req.body.password})
+        if (account !== null) {
+            res.json({
+                mess:"Đăng nhập thành công. Đang điều hướng về trang chủ",
+                type:"success",
+                duration:2000
+            })
+        } else {
+            res.json({
+                mess:"email hoặc mật khẩu sai. Mời kiểm tra lại",
+                type:"error",
+                duration:5000
+            })
+        }
     }
     getRegister(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
         Account.find({}).then((data)=>res.json(data))
     }
-    postRegister(req, res) {
-        const newAccount = new Account(req.query)
-        newAccount.save()
-        res.json(newAccount)
+    async postRegister(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        let account = await Account.findOne({email: req.body.email})
+        if (account !== null) {
+            res.json({
+                mess:"Email đã tồn tại. Mời nhập lại",
+                type:"error",
+                duration:3000
+            })
+        } else {
+            const newAccount = new Account(req.body)
+            newAccount.save()
+            res.json({
+                mess: "Đăng ký thành công. Mời đăng nhập",
+                type:"success",
+                duration:5000
+            })
+        }
+
     }
 }
 

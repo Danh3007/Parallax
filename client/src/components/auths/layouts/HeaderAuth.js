@@ -6,7 +6,7 @@ class HeaderAuth extends Component {
     return (
       <header className="headerAuth">
         <div className="container">
-          <Link to="/">
+          <Link className="navigato" to="/">
             <img src="./images/logo.png" title="Logo" alt="logo-shop" className="logoAuth"></img>
           </Link>
           <span className="txtAuth">Đăng Nhập / Đăng Kí</span>

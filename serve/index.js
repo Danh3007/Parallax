@@ -1,10 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors")
 
 const route = require("./router/index")
 
 const app = express();
 app.use(express.json());
+
+app.options("*", cors())
 
 route(app)
 
