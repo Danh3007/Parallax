@@ -15,9 +15,9 @@ label{
     margin-bottom: 5px;
    
 }
-.form-inline{
+.form-inline .change{
     margin-bottom: 40px;
 }
-button{
+ .change button{
     margin-right: 40px;
 }

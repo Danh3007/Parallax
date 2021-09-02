@@ -1,0 +1,45 @@
+.chonmau{
+margin-bottom: 20px;
+}
+.btn-circle{
+    width: 20px;
+    height: 20px;
+    padding: 6px 0;
+    border-radius: 15px;
+    margin-left: 20px;
+}
+.backgroundform{
+    background-color: rgba(223, 223, 223, 0.082);
+    border-radius: 10px;
+}
+.edith4{
+    margin-bottom: 40px;
+    margin-left: 10px;
+}
+.click1 button{
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.btn-default-xam{
+    background-color: gray;
+}
+.btn-default-do{
+    background-color: red;
+}
+.btn-default-xanh{
+    background-color: blue;
+}
+.btn-default-luc{
+    background-color: green;
+}
+.btn-default-vang{
+    background-color: yellow;
+}
+.click1 button{
+    margin-right: 40px;
+}
+#dichuyen{
+    margin-right: 10px;
+    margin-top: 15px;
+}

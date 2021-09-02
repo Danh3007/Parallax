@@ -36,7 +36,7 @@ class changePass extends Component {
                 <br />
                 <br />
                 <br />
-                <div className="form-inline">
+                <div className="form-inline change">
                     <button className="btn btn-primary">Xác nhận</button>
                     <button className="btn btn-light">Quên mật khẩu?</button>
                 </div>
