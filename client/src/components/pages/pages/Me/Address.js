@@ -4,7 +4,9 @@ class Address extends Component {
     render() {
         return (
             <div>
-                <h1>Thêm địa chỉ nhận hàng</h1>
+                <h3 className="h3bank_change_add_me_home">Địa chỉ của tôi</h3>
+                <button className="btn btn-primary">+ Thêm địa chỉ mới</button>
+                <hr/>
             </div>
         );
     }

@@ -1,0 +1,169 @@
+.homedanhchoban{
+  position: relative;
+  margin-top: 15px;
+  margin-right: -10px;
+  left: 10px;
+}
+
+.title-danhchoban{
+  position: relative;
+  padding-top: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: -3%;
+  justify-content: center;
+}
+
+.danhchoban {
+  padding: 0px;
+  margin-top: 0.5%;
+  width: 100%;
+  position: relative;
+}
+.danhchoban li {
+  display: inline-block;
+  width: 20%;
+  padding: 5px;
+}
+.danhchoban .card {
+  background-color: #f8f9fa !important;
+  min-height: auto;
+  width: auto;
+  position: relative;
+  display: flex;
+  transition: .1s ease-out;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+.danhchoban .card:hover{
+  transform: translateY(-2.5px);
+}
+.danhchoban .card:hover::before{
+  opacity: 1;
+}
+
+.danhchoban .card__img {
+  min-height: 100%;
+}
+.danhchoban .card__img .img__product {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.danhchoban .card__text {
+  height: auto;
+}
+.danhchoban .card__text .text__product {
+  height: 8%;
+  font-weight: 600;
+  font-size: 15px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  padding: 5px 5px 0px;
+}
+.danhchoban .card__text .text__priceup {
+  color: #f57224;
+  font-size: 15px;
+  padding: 0 5px;
+}
+.danhchoban .card__text .text__pricedown {
+  font-size: 10px;
+  padding: 0 5px;
+}
+.danhchoban .card__text .text__price-cost{
+  color: #a5a5a5;
+  text-decoration: line-through;
+}
+.danhchoban .card__text .text__vnd{
+  color: #a5a5a5;
+  text-decoration: line-through;
+}
+
+.danhchoban .card__text .sold{
+  position: relative;
+  color: #a5a5a5;
+  margin-top: -17px;
+  padding: 0 5px;
+}
+
+/* RESPONSIVE Tablet */
+@media (max-width: 991.5px) {
+  .title-danhchoban{
+    padding-top: 0px;
+    font-size: 12px;
+    margin-left: -4%;
+  }
+  
+  .danhchoban {
+    margin-top: 1%;
+  }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 767.5px) {
+  .homedanhchoban{
+    margin-top: 0px;
+  }
+  .title-danhchoban{
+    padding-top: 10px;
+    font-size: 12px;
+    margin-left: -7%;
+  }
+  
+  .danhchoban {
+    margin-top: 1%;
+  }
+  .danhchoban li {
+    width: 33.33%;
+  }
+  .danhchoban .card__text .text__priceup {
+    font-size: 13px;
+  }
+  .danhchoban .card__text .text__pricedown {
+    font-size: 9px;
+  }
+  
+  .danhchoban .card__text .sold{
+    margin-top: -15px;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+}
+
+
+@media (max-width: 480.5px) {
+  .homedanhchoban{
+    margin-top: 0%;
+  }
+  .title-danhchoban{
+    padding-top: 10px;
+    font-size: 12px;
+    margin-left: -8%;
+  }
+  
+  .danhchoban {
+    margin-top: 1%;
+  }
+  .danhchoban li {
+    width: 33.33%;
+  }
+  .danhchoban .card__text {
+    margin-top: -8px;
+  }
+  .danhchoban .card__text .text__product {
+    font-size: 12px;
+  }
+  .danhchoban .card__text .text__priceup {
+    font-size: 12px;
+  }
+  .danhchoban .card__text .text__pricedown {
+    font-size: 8px;
+  }
+  
+  .danhchoban .card__text .sold{
+    font-size: 7px;
+    margin-top: -13px;
+    padding: 0 5px;
+  }
+}
