@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors")
@@ -8,6 +9,8 @@ const app = express();
 app.use(express.json());
 
 app.options("*", cors())
+
+app.use(express.static(path.join(__dirname, 'client/public')))
 
 route(app)
 

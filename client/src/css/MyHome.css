@@ -1,19 +1,153 @@
-.navigation p{
-    font-size: 15px;
-    color: rgb(100, 100, 100);
-    font-weight: 400;
-    margin-top: 10px;
-    margin-bottom: -5px;
+.myHome {
+    display: flex;
+    margin-top: 20px;
+    min-height: 500px;
 }
-img{
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background-size: 100px;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
+.myHome__menu {
+    flex: 1.2;
+}
+.myHome__info {
+    flex: 2;
+}
+.myHome__caption {
+    font-size: 26px;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+}
+.myHome__li {
+    font-size: 16px;
+    color: rgb(100, 100, 100);
+}
+.myHome__li :hover {
+    color: black;
 }
 .Myhome__icon{
     color: rgba(92, 92, 218, 0.719);
+}
+.myHome__caption--desc {
+    font-size: 15px;
+    text-align: center;
+}
+.myHome__me--label {
+    font-size: 20px;
+    font-weight: 500;
+}
+.myHome__me--input {
+    font-size: 18px;
+    line-height: 2.5rem;
+    font-weight: 400;
+}
+.myHome__me--span,
+.myHome__me--spanBtn{
+    font-size: 18px;
+    font-weight: 400;
+}
+.myHome__me--spanBtn {
+    color: #8a8ae4;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.myHome__me--gender {
+    font-size: 25px;
+    
+}
+.myHome__me--select {
+    margin-left: 5px;
+    font-size: 16px;
+}
+.btn__me {
+    background-color: #78789b;
+    color: white;
+    font-size: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.btn__add {
+    background-color: #78789b;
+    color: white;
+    font-size: 16px;
+    margin: 5px;
+}
+#setAddress {
+    display: none;
+    transition: 1s;
+}
+.table__address {
+    width: 100%;
+    display: flex;
+}
+.table__address--info {
+    width: 90%;
+    word-wrap:break-word;
+    margin-left: 5px;
+    font-size: 20px;
+}
+.table__address--info :hover {
+    background-color: #78789b;
+    color: white;
+    border-radius: 5px;
+}
+.table__address--btn {
+    flex: 1;
+    text-align: right;
+    cursor: pointer;
+}
+.table__address--icon {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+@media (max-width: 991.5px) {
+    .myHome {
+        height: 400px;
+    }
+    .myHome__caption {
+        font-size: 22px;
+    }
+    .myHome__caption--desc {
+        font-size: 13px;
+    }
+    .myHome__li {
+        font-size: 14px;
+    }
+    .myHome__me--label {
+        font-size: 18px;
+    }
+    .myHome__me--input {
+        font-size: 16px;
+    }
+    .btn__me {
+        font-size: 14px;
+    }
+    .table__address--info {
+        font-size: 18px;
+    }
+}
+@media (max-width: 767.5px) {
+    .myHome {
+        height: 350px;
+    }
+    .myHome__caption {
+        font-size: 20px;
+    }
+    .myHome__caption--desc {
+        font-size: 11px;
+    }
+    .myHome__li {
+        font-size: 12px;
+    }
+    .myHome__me--label {
+        font-size: 16px;
+    }
+    .myHome__me--input {
+        font-size: 14px;
+    }
+    .btn__me {
+        font-size: 1wpx;
+    }
+    .table__address--info {
+        font-size: 16px;
+    }
 }

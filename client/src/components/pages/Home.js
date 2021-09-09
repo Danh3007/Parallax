@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import TrangChu from "./pages/TrangChu";
-import About from "./pages/About";
+import Detail from "./pages/Detail";
 import MyHome from "./pages/MyHome";
+import Cart from "./pages/Shopcart"
+import GroupProduct from "./pages/adminGroupProduct"
 
 class Home extends Component {
   render() {
@@ -13,8 +15,10 @@ class Home extends Component {
       <div>
         <Header />
         <Switch>
+            <Route path="/groupProduct" component={GroupProduct} />
             <Route path="/me" component={MyHome} />
-            <Route path="/about" component={About} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/detail" component={Detail} />
             <Route path="/" component={TrangChu} />
         </Switch>
         <Footer />

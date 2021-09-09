@@ -18,6 +18,13 @@ html {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
+a:hover {
+    color: #000;
+    text-decoration: none;
+  }
+button:focus {
+  outline: none;
+}
 .btn:hover {
   opacity: 0.8;
 }

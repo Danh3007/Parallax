@@ -5,7 +5,7 @@ const auth = require("../controllers/auth/auth")
 
 router.post("/datalogin", auth.getLogin);
 router.post("/login", auth.postLogin);
-router.get("/register", auth.getRegister);
+router.post("/updatelogin", auth.updateLogin);
 router.post("/register", auth.postRegister);
 
 module.exports = router;

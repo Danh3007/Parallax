@@ -14,28 +14,41 @@ class Auth {
         let account = await Account.findOne({email: req.body.email, password: req.body.password})
         if (account !== null) {
             res.json({
-                mess:"Đăng nhập thành công. Đang điều hướng về trang chủ",
+                mess:"Đăng nhập thành công. Đang điều hướng về trang chủ.",
                 type:"success",
                 duration:2000
             })
         } else {
             res.json({
-                mess:"email hoặc mật khẩu sai. Mời kiểm tra lại",
+                mess:"email hoặc mật khẩu sai. Mời kiểm tra lại.",
                 type:"error",
                 duration:5000
             })
         }
     }
-    getRegister(req, res) {
+    async updateLogin(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
-        Account.find({}).then((data)=>res.json(data))
+        let account = await Account.findOneAndUpdate({email: req.body.email, password: req.body.password}, {password: req.body.password1})
+        if (account !== null) {
+            res.json({
+                mess:"Đổi mật khẩu thành công.",
+                type:"success",
+                duration:2000
+            })
+        } else {
+            res.json({
+                mess:"Sai mật khẩu. Mời nhập lại.",
+                type:"error",
+                duration:5000
+            })
+        }
     }
     async postRegister(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
         let account = await Account.findOne({email: req.body.email})
         if (account !== null) {
             res.json({
-                mess:"Email đã tồn tại. Mời nhập lại",
+                mess:"Email đã tồn tại. Mời nhập lại.",
                 type:"error",
                 duration:3000
             })
@@ -43,7 +56,7 @@ class Auth {
             const newAccount = new Account(req.body)
             newAccount.save()
             res.json({
-                mess: "Đăng ký thành công. Mời đăng nhập",
+                mess: "Đăng ký thành công. Mời đăng nhập.",
                 type:"success",
                 duration:5000
             })

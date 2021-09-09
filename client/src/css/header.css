@@ -4,6 +4,7 @@ header {
     width: 100%;
     padding: 10px;
     transition:0.5s;
+    z-index: 10;
     
 }
 header.sticky{
@@ -21,12 +22,12 @@ header .navbar-brand{
     background-position: center;
     cursor: pointer;
 }
-/* header .navigation{
+header .navigation{
     position: relative;
     display: flex;
     justify-content: right;
     align-items: right;
-} */
+}
 
 header .navigation ul{
     margin-bottom: -10px;
@@ -49,6 +50,53 @@ header .navigation p:hover{
     background: url(../images/banner.png);
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+
+/* dropdown menu */
+.dropdown__btn {
+    background-color: #f8f9fa;
+    border: none;
+}
+.dropdown__menu {
+    display: none;
+    position: absolute;
+    right: 15px;
+    margin-top: 0px;
+    background-color: rgb(100, 100, 100);
+}
+.dropdown__menu--item {
+    display: flex;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+.dropdown__btn ::before {
+    content: "";
+    margin-top: 25px;
+    position: absolute;
+    height: 20px;
+    width: 70px;
+    right: 10px;
+}
+.dropdown__btn ::after {
+    content: "";
+    display: none;
+    position: absolute;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent rgb(100, 100, 100) transparent;
+    right: 25px;
+    top: 35px;
+    transition: 2s;
+}
+#dropdownHeader:hover .dropdown__menu{
+    display: block;
+    z-index: 10;
+}
+#dropdownHeader:hover .dropdown__btn ::after {
+    display: block;
 }
 
 /* RESPONSIVE Tablet */
@@ -83,17 +131,38 @@ header .navigation p:hover{
     }
     header .navigation ul{
         display: block;
-        margin-top:  5px;
+        margin: 0;
+        width: 100%;
     }
     header .navigation li{
         padding-top: 0px;
     }
-
     header .navigation p{
         margin-left: 20px;
         font-size: 15px;
     }
-    
+    #dropdownHeader {
+        margin-top: -20px;
+    }
+    .dropdown__btn {
+        display: none;
+    }
+    .dropdown__menu {
+        display: block;
+        background-color: white;
+        left: 0;
+        width: 100%;
+    }
+    .dropdown__menu--item {
+        font-size: 15px;
+        color: rgb(100, 100, 100);
+        padding-left: 5px;
+        margin-left: 20px;
+    }
+    header li.nav-item {
+        padding: 5px;
+        height: 30px;
+    }
     .menuToggle{
         top: 3px;
         position: relative;
@@ -143,6 +212,25 @@ header .navigation p:hover{
         width: 70px;
         height: 40px;
         background-size: 70px;
+    }
+    .dropdown__btn {
+        display: none;
+    }
+    .dropdown__menu {
+        display: block;
+        background-color: white;
+        left: 0;
+        margin: 0;
+    }
+    .dropdown__menu--item {
+        font-size: 10px;
+        color: rgb(100, 100, 100);
+        padding-left: 5px;
+        margin-left: 10px;
+    }
+    header li.nav-item {
+        padding: 5px;
+        height: 30px;
     }
     .menuToggle{
         top: 3px;

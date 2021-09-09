@@ -23,8 +23,7 @@ class footer extends Component {
                                     <h3>liên kết nhanh</h3>
                                     <ul className="list-inline f-social">
                                     <p><Link className="nav-link" to="/"><span className="footer__icon fas fa-angle-double-right"></span>Trang chủ</Link></p>
-                                    <p><Link className="nav-link" to="/about"><span className="footer__icon fas fa-angle-double-right"></span>Giới thiệu</Link></p>
-                                    <p><Link className="nav-link" to="/auth"><span className="footer__icon fas fa-angle-double-right"></span>Đăng nhập</Link></p>
+                                    <p><Link className="nav-link" to="/about"><span className="footer__icon fas fa-angle-double-right"></span>Danh sách sản phẩm</Link></p>
                                     </ul>
                                 </div>
                                 <div className="infoFooter">
