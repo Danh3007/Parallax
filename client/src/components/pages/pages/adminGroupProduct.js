@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import callApi from "../../../utils/apiCaller";
 
-class Detail extends Component {
+class AdminPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,22 +22,22 @@ class Detail extends Component {
     console.log(option.value);
   };
 
-  onShowPage = async(e) => {
+  onShowPage = async(name) => {
     const showForm = document.querySelector(".admin__form")
-    const onNew = document.querySelector(".admin__option--btn")
-    const adminApi = showForm.querySelector("#adminApi")
+    const onNew = document.querySelector(".admin__btn")
     showForm.style.display = "block"
     onNew.style.display = "none"
     const nameProduct = showForm.querySelector("#nameProduct")
     const activeName = showForm.querySelector(".activeName")
+    const adminApi = showForm.querySelector("#adminApi")
     const messNotity = showForm.querySelector(".form-message")
     showForm.addEventListener("focus", (e) => {
       messNotity.innerHTML=""
     }, true)
-    if (e.target.title !== "") {
-      activeName.innerHTML = "Chọn sửa: " + e.target.title
-      nameProduct.value = e.target.title
-      let active = e.target.title
+    if (name !== "") {
+      activeName.innerHTML = "Chọn sửa: " + name
+      nameProduct.value = name
+      let active = name
       adminApi.innerHTML="Sửa"
       adminApi.onclick = (e) => {
         e.preventDefault()
@@ -103,63 +102,65 @@ class Detail extends Component {
     let elements = this.state.products.map((product) => {
       return (
         <tr key={product.nameProduct}>
-          <td className="admin__txt">{product.nameProduct}</td>
+          <td className="main__label">{product.nameProduct}</td>
           <td>
             <img className="admin__img" src={"./images/" + product.imgProduct} alt="hình ảnh" />
           </td>
           <td style={{ width: "5%" }}>
-            <i onClick={this.onShowPage} title={product.nameProduct} className="admin__icon fas fa-edit"></i>
+            <i onClick={(e) => this.onShowPage(product.nameProduct)} title="Chỉnh sửa" className="admin__icon fas fa-edit"></i>
           </td>
           <td style={{ width: "5%" }}>
-            <i onClick={(e) => this.onRemovePage(product.nameProduct)} className="admin__icon fas fa-trash"></i>
+            <i onClick={(e) => this.onRemovePage(product.nameProduct)} title="xóa" className="admin__icon fas fa-trash"></i>
           </td>
         </tr>
       );
     });
     return (
-      <div className="container" style={{ minHeight: "500px" }}>
-        <div className="admin__caption">Nhóm sản phẩm</div>
-        <hr style={{ width: "80%", margin: "10px auto" }} />
-        <div className="admin__option">
-          <div className="admin__filter">
-            <h3 className="admin__filter--text">Sắp xếp theo</h3>
-            <select onChange={this.onFilter} className="admin__filter--select">
-              <option value="asc">Từ A-Z</option>
-              <option value="desc">Từ Z-A</option>
-            </select>
-          </div>
+      <div className="container">
+        <div className="main">
+          <div className="main__caption" style={{fontWeight: "700"}}>Nhóm sản phẩm</div>
+          <hr style={{ width: "80%", margin: "10px auto" }} />
+          <div className="admin__option">
+            <div style={{display: "flex"}}>
+              <h3 className="main__label">Sắp xếp theo</h3>
+              <select onChange={this.onFilter} className="main__select">
+                <option value="asc">Từ A-Z</option>
+                <option value="desc">Từ Z-A</option>
+              </select>
+            </div>
 
-          <button onClick={this.onShowPage} className="admin__option--btn fas fa-edit">
-            Đăng thêm ngành
-          </button>
-        </div>
-        <div className="admin__body">
-          <table className="admin__table table table-striped">
-            <thead>
-              <tr>
-                <td style={{ width: "30%", textDecoration: "underline" }} className="admin__txt">Tên sản phẩm</td>
-                <td style={{ width: "60%", textDecoration: "underline" }} className="admin__txt" colSpan="3">Hình ảnh</td>
-              </tr>
-            </thead>
-            <tbody>{elements}</tbody>
-          </table>
-          <form className="admin__form" encType="multipart/form-data" >
-            <p className="activeName admin__txt"></p>
-            <div className="form-group">
-              <label className="admin__txt">Tên Ngành</label>
-              <input id="nameProduct" type="text" required className="admin__input form-control" />
-            </div>
-            <div className="form-group">
-              <label className="admin__txt">Hình ảnh</label>
-              <input onChange={this.onChangeFile} id="imgProduct" type="file" required className="admin__input form-control" />
-            </div>
-            <p className="form-message"></p>
-            <button id="adminApi" className="btn admin__txt">Lưu</button>
-          </form>
+            <button onClick={(e) => this.onShowPage("")} className="admin__btn fas fa-edit">
+              Đăng thêm ngành
+            </button>
+          </div>
+          <div className="admin__body">
+            <table className="admin__table table table-striped">
+              <thead>
+                <tr>
+                  <td style={{ width: "30%", textDecoration: "underline" }} className="main__label">Tên sản phẩm</td>
+                  <td style={{ width: "60%", textDecoration: "underline" }} className="main__label" colSpan="3">Hình ảnh</td>
+                </tr>
+              </thead>
+              <tbody>{elements}</tbody>
+            </table>
+            <form className="admin__form" encType="multipart/form-data" >
+              <p className="activeName main__label"></p>
+              <div className="form-group">
+                <label className="main__label">Tên Ngành</label>
+                <input id="nameProduct" type="text" required className="main__input form-control" />
+              </div>
+              <div className="form-group">
+                <label className="main__label">Hình ảnh</label>
+                <input onChange={this.onChangeFile} id="imgProduct" type="file" required className="main__input form-control" />
+              </div>
+              <p className="form-message"></p>
+              <button id="adminApi" className="btn main__label">Lưu</button>
+            </form>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Detail;
+export default AdminPage;

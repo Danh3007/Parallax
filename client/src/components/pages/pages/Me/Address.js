@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 
 import callApi from '../../../../utils/apiCaller';
 
@@ -43,33 +44,48 @@ class Address extends Component {
         }
     }
 
-    removeAddress = async(e) => {
-        let element = e.target
-        const email = localStorage.getItem("email")
-        const removeAddress = await callApi("info/removeaddress","POST",{email: email, element: element.title}) // eslint-disable-line
-        window.location.reload();
+    removeAddress = async(name) => {
+        confirmAlert({
+            title: 'Cảnh báo !!!',
+            message: 'Bạn có muốn xóa địa chỉ này.',
+            buttons: [
+                {
+                    label: 'Đồng ý',
+                    onClick: async() => {
+                        let element = name
+                        const email = localStorage.getItem("email")
+                        const removeAddress = await callApi("info/removeaddress","POST",{email: email, element: element}) // eslint-disable-line
+                        window.location.reload();
+                    }
+                },
+                {
+                    label: 'Không đồng ý',
+                    onClick: () => {console.log("quay lại");}
+                }
+            ]
+        });
     }
 
     // thông báo
     render() {
         let elements = this.state.address.map(e => {
-            return  <div key={e} className="table__address">
-                        <div className="table__address--info">
+            return  <div key={e} className="myHome__address">
+                        <div className="myHome__address--info">
                             <p>{e}</p>
                         </div>
-                        <div className="table__address--btn">
-                            <i onClick={this.removeAddress} title={e} style={{color: "red"}} className="table__address--icon fas fa-trash-alt"></i>
+                        <div className="myHome__address--btn">
+                            <i onClick={() => this.removeAddress(e)} title="Xóa" style={{color: "red"}} className="myHome__address--icon fas fa-trash-alt"></i>
                         </div>
                     </div>
         })
         return (
             <div>
-                <h3 className="myHome__caption">Địa chỉ của tôi</h3>
-                <button id="onSetAddress" onClick={this.onSetAddress} className="btn btn__me">+ Thêm địa chỉ mới</button>
-                <div id="setAddress">
-                    <input id="address" className="myHome__me--input form-control" type="text" />
+                <h3 className="main__caption">Địa chỉ của tôi</h3>
+                <button id="onSetAddress" onClick={this.onSetAddress} className="btn main__btn">+ Thêm địa chỉ mới</button>
+                <div id="setAddress" style={{display: "none"}}>
+                    <input id="address" className="main__input form-control" type="text" />
                     <p className="form-message"></p>
-                    <button onClick={this.onSaveAddress} className="btn btn__me">Lưu</button>
+                    <button onClick={this.onSaveAddress} className="btn main__btn">Lưu</button>
                 </div>
                 <hr/>
                 {elements}

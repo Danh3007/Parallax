@@ -26,10 +26,10 @@ class MyHome extends Component {
     render() {
         return (
             <main className="container">
-                <div className="myHome">
+                <div className="main myHome">
                     <aside className="myHome__menu">
                         <ul className="navbar-nav">
-                            <h3 style={{textAlign: "center"}}>Xin chào, <span className="myHome__caption">{this.state.nameUser}</span></h3>
+                            <h3 style={{textAlign: "center"}}>Xin chào, <span className="main__caption">{this.state.nameUser}</span></h3>
                             <hr style={{width: "70%", margin: "10px auto"}} />
                             <li className="nav-item">
                                 <Link className="nav-link myHome__li" to="/me"><span className="Myhome__icon fas fa-user"></span> Hồ sơ</Link>

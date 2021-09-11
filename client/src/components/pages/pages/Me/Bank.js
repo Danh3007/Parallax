@@ -7,8 +7,8 @@ class bank extends Component {
     render() {
         return (
             <div>
-                <h3 className="myHome__caption">Tài khoảng ngân hàng của tôi</h3>
-                <button onClick={this.onBank} className="btn btn__me">+ Thêm tài khoảng ngân hàng</button>
+                <h3 className="main__caption">Tài khoảng ngân hàng của tôi</h3>
+                <button onClick={this.onBank} className="btn main__btn">+ Thêm tài khoảng ngân hàng</button>
                 <hr/>
             </div>
         );

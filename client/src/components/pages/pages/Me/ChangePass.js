@@ -94,26 +94,26 @@ class changePass extends Component {
             <div>
                 <div id="toast">
                 </div>
-                <h3 className="myHome__caption">Thay đổi mật khẩu</h3>
-                <p className="myHome__caption--desc">Để bảo mật tài khoảng, vui lòng không chia sẻ cho người khác</p>
+                <h3 className="main__caption">Thay đổi mật khẩu</h3>
+                <p className="main__caption--desc">Để bảo mật tài khoảng, vui lòng không chia sẻ cho người khác</p>
                 <hr style={{width: "80%", margin: "10px auto"}} />
                 <form id="form-changePass">
                     <div className="form-group">
-                        <label className="myHome__me--label">Mật khẩu hiện tại:</label>
-                        <input className="myHome__me--input form-control" type="password" id="password" />
+                        <label className="main__label">Mật khẩu hiện tại:</label>
+                        <input className="main__input form-control" type="password" id="password" />
                         <span className="form-message"></span>
                     </div>
                     <div className="form-group">
-                        <label className="myHome__me--label">Mật khẩu mới:</label>
-                        <input className="myHome__me--input form-control" type="password" id="password1" />
+                        <label className="main__label">Mật khẩu mới:</label>
+                        <input className="main__input form-control" type="password" id="password1" />
                         <span className="form-message"></span>
                     </div>
                     <div className="form-group">
-                        <label className="myHome__me--label">Xác nhận mật khẩu:</label>
-                        <input className="myHome__me--input form-control" type="password" id="passwordComfirm" />
+                        <label className="main__label">Xác nhận mật khẩu:</label>
+                        <input className="main__input form-control" type="password" id="passwordComfirm" />
                         <span className="form-message"></span>
                     </div>
-                    <button onClick={this.onChangePass} className="btn btn__me">Xác nhận</button>
+                    <button onClick={this.onChangePass} className="btn main__btn">Xác nhận</button>
                 </form>
             </div>
         );

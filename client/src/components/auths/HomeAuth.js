@@ -110,7 +110,7 @@ class Home extends Component {
             let messNotity = await callApi("auth/register","POST",{nameUser,email,password})
             if (messNotity.data.type === "success") {
                 console.log(("ok"));
-                const upInfo = await callApi("info","POST",{email}) // eslint-disable-line
+                const upInfo = await callApi("info","POST",{email: email, gender: 0, birthDay: "1990-01-01"}) // eslint-disable-line
             }
             // show Notity
             this.onNotity(messNotity.data.mess, messNotity.data.type, messNotity.data.duration)

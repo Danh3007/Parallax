@@ -65,6 +65,9 @@ class header extends Component {
                         <Link className="dropdown__menu--item" to="/me">Quản lí tài khoản</Link>
                       </li>
                       <li className="nav-item">
+                        <Link className="dropdown__menu--item" to="/myShop">Cửa hàng của bạn</Link>
+                      </li>
+                      <li className="nav-item">
                         <a onClick={this.onLogOut} className="dropdown__menu--item" href="/">Đăng xuất</a>
                       </li>
                     </div>
@@ -79,7 +82,7 @@ class header extends Component {
                         <Link className="dropdown__menu--item" to="/groupProduct">Quản lí nhóm ngành</Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="dropdown__menu--item" to="/">Quản lí người dùng</Link>
+                        <Link className="dropdown__menu--item" to="/groupUser">Quản lí người dùng</Link>
                       </li>
                       <li className="nav-item">
                         <a onClick={this.onLogOut} className="dropdown__menu--item" href="/">Đăng xuất</a>

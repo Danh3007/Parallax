@@ -6,23 +6,24 @@ const account_infoSchema = new mongoose.Schema ({
         required: true,
         unique: true
     },
-    gender: {
-        type: Number
+    nameShop: {
+        type: String,
+        required: true
     },
-    birthDay: {
+    introduce: {
         type: String
     },
-    telephone: {
-        type: Number
-    },
     address: {
+        type: String
+    },
+    follower: {
         type: Array
     },
-    bank: {
-        type: Object
-    },
+    prestige: {
+        type: Number
+    }
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model("info", account_infoSchema)
+module.exports = mongoose.model("shop", account_infoSchema)

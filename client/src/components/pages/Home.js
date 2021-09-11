@@ -8,6 +8,8 @@ import Detail from "./pages/Detail";
 import MyHome from "./pages/MyHome";
 import Cart from "./pages/Shopcart"
 import GroupProduct from "./pages/adminGroupProduct"
+import GroupUser from "./pages/adminGroupUser"
+import MyShop from "./pages/myShop"
 
 class Home extends Component {
   render() {
@@ -15,6 +17,8 @@ class Home extends Component {
       <div>
         <Header />
         <Switch>
+            <Route path="/myShop" component={MyShop} />
+            <Route path="/groupUser" component={GroupUser} />
             <Route path="/groupProduct" component={GroupProduct} />
             <Route path="/me" component={MyHome} />
             <Route path="/cart" component={Cart} />

@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-import './css/index.css'
 import "./css/auth.css"
-import "./css/header.css"
-import "./css/footer.css"
-import "./css/search.css"
-import './css/MyHome.css';
-import "./css/danhmuc.css"
 import './css/detail.css';
+import './css/index.css';
+import "./css/layouts.css"
+import "./css/main.css"
 import './css/shopcart.css';
-import "./css/admin.css"
 import App from './App';
 
 ReactDOM.render(
