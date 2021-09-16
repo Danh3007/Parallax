@@ -89,7 +89,7 @@ class Auth {
 
     // register
     async postRegister(req, res) {
-        res.header('Access-Control-Allow-Origin', '*');
+        `res.header('Access-Control-Allow-Origin', '*');`
         let account = await Account.findOne({email: req.body.email})
         if (account !== null) {
             res.json({

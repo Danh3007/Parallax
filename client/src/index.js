@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import "./css/auth.css"
-import './css/detail.css';
 import './css/index.css';
 import "./css/layouts.css"
 import "./css/main.css"
