@@ -6,6 +6,7 @@ import Footer from "./layouts/Footer";
 import TrangChu from "./pages/TrangChu";
 import About from "./pages/About";
 import MyHome from "./pages/MyHome";
+import SanPham from "./pages/SanPham/SanPham";
 
 class Home extends Component {
   render() {
@@ -15,6 +16,7 @@ class Home extends Component {
         <Switch>
             <Route path="/me" component={MyHome} />
             <Route path="/about" component={About} />
+            <Route path="/SanPham" component={SanPham} />
             <Route path="/" component={TrangChu} />
         </Switch>
         <Footer />

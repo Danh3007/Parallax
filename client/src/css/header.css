@@ -130,11 +130,7 @@ header .navigation p:hover{
         display: flex;
         z-index: 999;
     }
-    header .navigation ul{
-        display: block;
-        margin-top:  -5px;
-    }
-    header .navigation p{
+    eader .navigation p{
         margin-left: 10px;
         font-size: 10px;
     }
