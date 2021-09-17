@@ -48,7 +48,7 @@ class SanPham extends Component {
             </li>
         })
         return (
-            <div>
+            <div className="container">
                 <div className="homedanhchoban">
                     <div className="title-danhchoban text-center">SẢN PHẨM GÌ ?</div>
                     <ul className="danhchoban row" >
