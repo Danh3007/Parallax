@@ -29,6 +29,9 @@ button:focus {
   margin-top: 20px;
   min-height: 500px;
 }
+.fas.fa-star {
+  color: orange;
+}
 /* index */
 
 /* font size */

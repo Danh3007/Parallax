@@ -25,6 +25,7 @@ class Introduce extends Component {
       }
     render() {
         return (
+          <div>
             <div style={{display: "flex"}}>
                 <article className="introduce__left">
                     <h3 className="main__label">Mô tả</h3>
@@ -39,6 +40,9 @@ class Introduce extends Component {
                     <p className="main__span">Độ uy tín: {this.state.prestige}</p>
                 </aside>
             </div>
+            <button className="btn main__btn">Cập nhật thông tin cửa hàng</button>
+            <button className="btn main__btn" style={{backgroundColor: "red"}}>Xóa cửa hàng</button>
+          </div>
         );
     }
 }

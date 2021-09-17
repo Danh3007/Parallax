@@ -202,6 +202,38 @@
 .description {
   margin-top: 20px;
 }
+.evaluate {
+  border: 1px solid black;
+  margin-top: 10px;
+  height: 500px;
+  width: 100%;
+  overflow: scroll;
+  padding: 10px;
+}
+.vote {
+  margin: 10px;
+}
+.btn__vote {
+  font-size: 18px;
+}
+.form__vote {
+  border: 1px solid black;
+  padding: 10px;
+}
+.reivews {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(223, 217, 217);
+  margin-bottom: 10px;
+}
+.reivew {
+  flex: 1;
+  display: flex;
+}
+.content:hover {
+  background-color: rgb(230, 225, 225);
+}
 
 /* tablet */
 @media (max-width: 991.5px) {

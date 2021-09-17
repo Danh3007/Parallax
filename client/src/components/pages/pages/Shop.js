@@ -6,101 +6,102 @@ import Follower from "./myShop/Follower"
 import Product from "./myShop/Product"
 import callApi from "../../../utils/apiCaller";
 
-class MyShop extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: "",
-      nameShop: "",
-      introduce: "",
-      address: "",
-      follower: [],
-      prestige: 0,
-      dayCreate: ""
-    };
-  }
+class Shop extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     id: "",
+  //     nameShop: "",
+  //     introduce: "",
+  //     address: "",
+  //     follower: [],
+  //     prestige: 0,
+  //     dayCreate: ""
+  //   };
+  // }
 
-  async componentDidMount() {
-    const email = localStorage.getItem("email");
-    let myShop = await callApi("shop/getShop", "POST", { email: email });
-    if (myShop.data !== "NO") {
-      this.setState({
-        id: myShop.data._id,
-        nameShop: myShop.data.nameShop,
-        introduce: myShop.data.introduce,
-        address: myShop.data.address,
-        dayCreate: myShop.data.updatedAt.slice(0,10)
-      });
-    }
-  }
+  // async componentDidMount() {
+  //   const email = localStorage.getItem("email");
+  //   let myShop = await callApi("shop/getShop", "POST", { email: email });
+  //   if (myShop.data !== "NO") {
+  //     this.setState({
+  //       id: myShop.data._id,
+  //       nameShop: myShop.data.nameShop,
+  //       introduce: myShop.data.introduce,
+  //       address: myShop.data.address,
+  //       dayCreate: myShop.data.updatedAt.slice(0,10)
+  //     });
+  //   }
+  // }
 
-  onShowForm = (e) => {
-    const noneShop = document.getElementById("none-shop");
-    const formShop = document.getElementById("form-shop");
-    noneShop.style.display = "none";
-    formShop.style.display = "block";
-  };
+  // onShowForm = (e) => {
+  //   const noneShop = document.getElementById("none-shop");
+  //   const formShop = document.getElementById("form-shop");
+  //   noneShop.style.display = "none";
+  //   formShop.style.display = "block";
+  // };
 
-  onHandleChange = (e) => {
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
-    this.setState({
-      [name]: value,
-    });
-  };
+  // onHandleChange = (e) => {
+  //   const target = e.target;
+  //   const name = target.name;
+  //   const value = target.value;
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // };
 
-  onCreateShop = async (e) => {
-    e.preventDefault();
-    const formShop = document.getElementById("form-shop");
-    const nameShop = formShop.querySelector("#nameShop");
-    const message = formShop.querySelector(".form-message");
-    nameShop.addEventListener("focus", (e) => {
-      message.innerHTML = "";
-    });
-    if (nameShop.value.length === 0) {
-      message.innerHTML = "Mời nhập tên cửa hàng";
-    } else {
-      console.log(this.state);
-      const email = localStorage.getItem("email");
-      const name = this.state;
-      const createShop = await callApi("shop/createShop", "POST", {
-        email: email,
-        nameShop: nameShop.value,
-        introduce: name.introduce,
-        address: name.address,
-        prestige: 0,
-      });
-      console.log(createShop);
-    }
-  };
-  onHandleChangeShop = (e) => {
-    const menu1 = document.querySelector("#menu1")
-    const menu2 = document.querySelector("#menu2")
-    const menu3 = document.querySelector("#menu3")
-    if (e.target === menu1) {
-      menu1.style.color = "var(--primary-color)"
-      menu2.style.color = "#333"
-      menu3.style.color = "#333"
-    }
-    if (e.target === menu2) {
-      menu1.style.color = "#333"
-      menu2.style.color = "var(--primary-color)"
-      menu3.style.color = "#333"
-    }
-    if (e.target === menu3) {
-      menu1.style.color = "#333"
-      menu2.style.color = "#333"
-      menu3.style.color = "var(--primary-color)"
-    }
-  }
+  // onCreateShop = async (e) => {
+  //   e.preventDefault();
+  //   const formShop = document.getElementById("form-shop");
+  //   const nameShop = formShop.querySelector("#nameShop");
+  //   const message = formShop.querySelector(".form-message");
+  //   nameShop.addEventListener("focus", (e) => {
+  //     message.innerHTML = "";
+  //   });
+  //   if (nameShop.value.length === 0) {
+  //     message.innerHTML = "Mời nhập tên cửa hàng";
+  //   } else {
+  //     console.log(this.state);
+  //     const email = localStorage.getItem("email");
+  //     const name = this.state;
+  //     const createShop = await callApi("shop/createShop", "POST", {
+  //       email: email,
+  //       nameShop: nameShop.value,
+  //       introduce: name.introduce,
+  //       address: name.address,
+  //       prestige: 0,
+  //     });
+  //     console.log(createShop);
+  //   }
+  // };
+  // onHandleChangeShop = (e) => {
+  //   const menu1 = document.querySelector("#menu1")
+  //   const menu2 = document.querySelector("#menu2")
+  //   const menu3 = document.querySelector("#menu3")
+  //   if (e.target === menu1) {
+  //     menu1.style.color = "var(--primary-color)"
+  //     menu2.style.color = "#333"
+  //     menu3.style.color = "#333"
+  //   }
+  //   if (e.target === menu2) {
+  //     menu1.style.color = "#333"
+  //     menu2.style.color = "var(--primary-color)"
+  //     menu3.style.color = "#333"
+  //   }
+  //   if (e.target === menu3) {
+  //     menu1.style.color = "#333"
+  //     menu2.style.color = "#333"
+  //     menu3.style.color = "var(--primary-color)"
+  //   }
+  // }
 
   render() {
     console.log(this.state);
     return (
       <div className="container">
         <div className="main">
-          <div className="main__caption" style={{ fontWeight: "700" }}>
+          danh
+          {/* <div className="main__caption" style={{ fontWeight: "700" }}>
             Cửa hàng của bạn
           </div>
           <hr style={{ width: "80%", margin: "10px auto" }} />
@@ -153,7 +154,7 @@ class MyShop extends Component {
                 </Switch>
               </div>
             </div>
-          )}
+          )} */}
         </div>
 
         
@@ -162,4 +163,4 @@ class MyShop extends Component {
   }
 }
 
-export default MyShop;
+export default Shop;

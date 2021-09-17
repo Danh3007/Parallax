@@ -10,6 +10,7 @@ import Cart from "./pages/Shopcart"
 import GroupProduct from "./pages/adminGroupProduct"
 import GroupUser from "./pages/adminGroupUser"
 import MyShop from "./pages/myShop"
+import Shop from "./pages/Shop"
 
 class Home extends Component {
   render() {
@@ -17,6 +18,7 @@ class Home extends Component {
       <div>
         <Header />
         <Switch>
+            <Route path="/shop" component={Shop} />
             <Route path="/myShop" component={MyShop} />
             <Route path="/groupUser" component={GroupUser} />
             <Route path="/groupProduct" component={GroupProduct} />

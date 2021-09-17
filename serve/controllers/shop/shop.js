@@ -22,6 +22,17 @@ class myShop {
         }
     }
 
+    // see Shop
+    async seeShop(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        const shop = await Shops.findById({_id: req.body.id})
+        if (shop !== null) {
+            res.json(shop)
+        } else {
+            res.json("NO")
+        }
+    }
+
 }
 
 module.exports = new myShop
