@@ -1,0 +1,170 @@
+.homedanhmuc{
+  margin-top: 15px;
+  border-radius: 2px;
+  background-color: #f8f9fa !important;
+}
+.title-danhmuc{
+  position: relative;
+  padding-top: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.danhmuc {
+  position: relative;
+  margin-top: 1%;
+  width: 100%;
+}
+.danhmuc li {
+  display: inline-block;
+  width: 12.5%;
+  text-align: center;
+}
+.danhmuc .card {
+  background-color: #f8f9fa !important;
+  height: 160px;
+  width: auto;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.danhmuc .card__img {
+  height: 133.86px;
+}
+.danhmuc .card__img .img__product {
+  height: 123.86px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+.danhmuc .card__text {
+  height: auto;
+}
+.danhmuc .card__text .text__product {
+  height: 8%;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 0px 5px;
+}
+
+
+/* RESPONSIVE Tablet */
+@media (max-width: 991.5px) {
+  .homedanhmuc{
+    padding: 5px;
+    height: 150px;
+  }
+  .title-danhmuc{
+    font-size: 13px;
+    margin-top: -10px;
+  }
+  .homedanhmuc ul{
+    padding: 5px 0;
+  }
+  .danhmuc {
+    right: -1px;
+    top: -5px;
+    display: flex;
+    overflow-x: auto;
+  }
+  .danhmuc li {
+    position: relative;
+    min-width: 12%;
+    margin: 0 1.7px;
+  }
+  .danhmuc .card {
+    height: 110px;
+    width: 80px;
+  }
+
+  .danhmuc::-webkit-scrollbar {
+    width: 0;
+  }
+  .danhmuc .card__img {
+    height: auto;
+  }
+  .danhmuc .card__img .img__product {
+    height: auto;
+    width: 100%;
+    margin-bottom: 5px;
+    padding-top: 0;
+  }
+  .danhmuc .card__text .text__product {
+    font-size: 8px;
+    padding: 0px 5px;
+  }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 767.5px) {
+  .homedanhmuc{
+    padding: 5px;
+    height: 115px;
+  }
+  .title-danhmuc{
+    font-size: 13px;
+    margin-top: -10px;
+  }
+  .danhmuc {
+    position: relative;
+    right: 1px;
+    top: -5px;
+    display: flex;
+    overflow-x: auto;
+  }
+  .danhmuc li {
+    position: relative;
+    min-width: 12%;
+    margin: 0 1.3px;
+  }
+  .danhmuc .card {
+    height: 75px;
+    width: 60px;
+  }
+  .danhmuc .card__img .img__product {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+  .danhmuc .card__text .text__product {
+    font-size: 6px;
+    padding: 0 5px;
+  }
+}
+
+
+@media (max-width: 480.5px) {
+  .homedanhmuc{
+    padding: 5px;
+    height: 115px;
+  }
+  .title-danhmuc{
+    font-size: 12px;
+    margin-top: -10px;
+  }
+  .danhmuc {
+    position: relative;
+    right: 3px;
+    top: -5px;
+    display: flex;
+    overflow-x: auto;
+  }
+  .danhmuc li {
+    position: relative;
+    min-width: 15%;
+    margin: 0 8px;
+  }
+  .danhmuc .card {
+    height: 75px;
+    width: 60px;
+  }
+  .danhmuc .card__img .img__product {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+  .danhmuc .card__text .text__product {
+    font-size: 6px;
+    padding: 0 5px;
+  }
+}

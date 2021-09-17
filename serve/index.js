@@ -1,17 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors")
 
 const route = require("./router/index")
 
 const app = express();
 app.use(express.json());
 
+app.options("*", cors())
+
 route(app)
 
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://admin:admin@cluster0.22ser.mongodb.net/reyleigh?retryWrites=true&w=majority",
+      "mongodb+srv://admin:admin@cluster0.krtxo.mongodb.net/parallax?retryWrites=true&w=majority",
       {
         useCreateIndex: true,
         useNewUrlParser: true,

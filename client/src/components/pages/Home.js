@@ -5,17 +5,18 @@ import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import TrangChu from "./pages/TrangChu";
 import About from "./pages/About";
-import Banner from "./pages/Banner";
-
+import MyHome from "./pages/MyHome";
+import SanPham from "./pages/SanPham/SanPham";
 
 class Home extends Component {
   render() {
     return (
       <div>
         <Header />
-        <Banner />
         <Switch>
+            <Route path="/me" component={MyHome} />
             <Route path="/about" component={About} />
+            <Route path="/SanPham" component={SanPham} />
             <Route path="/" component={TrangChu} />
         </Switch>
         <Footer />
