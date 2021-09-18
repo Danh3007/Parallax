@@ -22,10 +22,21 @@ class myShop {
         }
     }
 
-    // see Shop
-    async seeShop(req, res) {
+    // get Id
+    async getId(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
-        const shop = await Shops.findById({_id: req.body.id})
+        const shop = await Shops.findById({_id: req.body._id})
+        if (shop !== null) {
+            res.json(shop)
+        } else {
+            res.json("NO")
+        }
+    }
+
+    // update Shop
+    async updateShop(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        const shop = await Shops.findByIdAndUpdate({_id: req.body._id}, req.body)
         if (shop !== null) {
             res.json(shop)
         } else {

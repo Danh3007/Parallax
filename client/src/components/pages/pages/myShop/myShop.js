@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
-import Introduce from "./myShop/Introduce"
-import Follower from "./myShop/Follower"
-import Product from "./myShop/Product"
-import callApi from "../../../utils/apiCaller";
+import Introduce from "./Introduce"
+import Follower from "./Follower"
+import Product from "./Product"
+import callApi from "../../../../utils/apiCaller";
 
 class MyShop extends Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class MyShop extends Component {
       nameShop: "",
       introduce: "",
       address: "",
-      follower: [],
       prestige: 0,
       dayCreate: ""
     };
@@ -72,6 +71,7 @@ class MyShop extends Component {
         prestige: 0,
       });
       console.log(createShop);
+      window.location.reload();
     }
   };
   onHandleChangeShop = (e) => {
@@ -96,7 +96,7 @@ class MyShop extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="container">
         <div className="main">

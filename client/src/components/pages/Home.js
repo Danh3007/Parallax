@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
+// layouts
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
-import TrangChu from "./pages/TrangChu";
+// homePage
+import TrangChu from "./pages/homePage/TrangChu";
+
 import Detail from "./pages/Detail";
-import MyHome from "./pages/MyHome";
 import Cart from "./pages/Shopcart"
-import GroupProduct from "./pages/adminGroupProduct"
-import GroupUser from "./pages/adminGroupUser"
-import MyShop from "./pages/myShop"
 import Shop from "./pages/Shop"
+// me
+import MyHome from "./pages/Me/MyHome";
+// admin
+import GroupProduct from "./pages/admin/adminGroupProduct"
+import GroupUser from "./pages/admin/adminGroupUser"
+// myShop
+import MyShop from "./pages/myShop/myShop"
 
 class Home extends Component {
   render() {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
 import callApi from '../../../utils/apiCaller';
 
@@ -13,13 +12,15 @@ class Detail extends Component {
             star: 0,
             post: "",
             heart: false,
-            temp: 0
+            temp: 0,
+            Fler: [],
         }
     }
     
     async componentDidMount() {
         const email = localStorage.getItem("email");
-        let Product = await callApi("product/Product", "POST", {_id: "61428ba6ac4e3f2a741930b9"});
+        const _id = localStorage.getItem("detail");
+        let Product = await callApi("product/Product", "POST", {_id: _id});
         // console.log(Product);
         this.setState({
             product: Product.data,
@@ -37,12 +38,34 @@ class Detail extends Component {
             me: myReview.data
         })
         // console.log(myReview.data);
-        let seeShop = await callApi("shop/seeshop","POST", {id: Product.data.idShop})
+        let seeShop = await callApi("shop/getId","POST", {_id: Product.data.idShop})
         this.setState({
             nameShop: seeShop.data.nameShop,
             idShop: seeShop.data._id,
         })
         // console.log(seeShop);
+        let FL = await callApi("flProduct/get", "POST", {idProduct: this.state.idProduct, email: email})
+        if (FL.data !== "no") {
+            this.setState({
+                heart: true
+            })
+        }
+        // console.log(FL.data);
+        let FLAll = await callApi("flProduct/getAll", "POST", {idProduct: this.state.idProduct})
+        if (FLAll.data !== "no") {
+            this.setState({
+                Fler: FLAll.data
+            })
+        }
+    }
+
+    async componentDidUpdate() {
+        let FLAll = await callApi("flProduct/getAll", "POST", {idProduct: this.state.idProduct})
+        if (FLAll.data !== "no") {
+            this.setState({
+                Fler: FLAll.data
+            })
+        }
     }
 
     onVote = (e) => {
@@ -166,7 +189,19 @@ class Detail extends Component {
         }
     }
 
-    onChangeHeart = () => {
+    onChangeHeart = async(e) => {
+        const onHeart = document.getElementById("onHeart")
+        const offHeart = document.getElementById("offHeart")
+        const email = localStorage.getItem("email");
+        const nameUser = localStorage.getItem("nameUser");
+        if (e.target.closest(".btn.main__span") === onHeart) {
+            let Fl = await callApi("flProduct/create", "POST", {nameUser: nameUser, email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+            // console.log(Fl);
+        }
+        if (e.target.closest(".btn.main__span") === offHeart) {
+            let Fl = await callApi("flProduct/remove", "POST", {email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+            // console.log(Fl);
+        }
         this.setState({
             heart: !this.state.heart
         })
@@ -199,7 +234,6 @@ class Detail extends Component {
             mess.innerHTML = "Nhập nội dung"
             messStar.innerHTML = ""
         } else {
-            const email = localStorage.getItem("email");
             const createPost = await callApi("review/update", "POST", {
                 id: this.state.me._id,
                 star: this.state.star,
@@ -249,8 +283,21 @@ class Detail extends Component {
         }
     }
 
+    navigationShop = (e) => {
+        localStorage.setItem('shop', e);
+        this.props.history.push("/shop")
+    }
+
+    countFl =(a,b) => {
+        for (let i = 0; i < a.length; i++) {
+            b=b+1
+        }
+        return b
+    }
+
     render() {
-        const reviews = this.state.listReview.map(review=>{
+        const fl = this.countFl(this.state.Fler,0)
+        const reviews = this.state.listReview.map((review)=>{ // eslint-disable-line
             if (this.state.temp === 0) {
                 return  <div key={review._id} className="content">
                             <label className="main__label">Người đăng: {review.nameUser} <span>{review.star}<i className="fas fa-star"></i></span></label>
@@ -324,21 +371,22 @@ class Detail extends Component {
                             <button className="btn main__btn" type="submit"><i className="fa fa-shopping-cart" /> Thêm vào giỏ hàng</button>
                             
                             {this.state.heart === false ? (
-                                <button onClick={this.onChangeHeart} className="btn main__span">
-                                    <i id="heart" className="far fa-heart"></i>
-                                    <span> yêu thích</span>
+                                <button id="onHeart" onClick={this.onChangeHeart} className="btn main__span">
+                                    <i className="far fa-heart"></i>
+                                    <span> {fl} yêu thích</span>
                                 </button>
                             ):(
-                                <button onClick={this.onChangeHeart} className="btn main__span">
+                                <button id="offHeart" onClick={this.onChangeHeart} className="btn main__span">
                                     <i style={{color: "red"}} className="fas fa-heart"></i>
-                                    <span> yêu thích</span>
+                                    <span> {fl} yêu thích</span>
                                 </button>
                             )}
                         </div>
                     </div>
                     <div className="description">
                         <h3 className="main__label" style={{textDecoration: "underline"}}>Cửa hàng của sản phẩm</h3>
-                        <Link style={{color: "black"}} to="/shop" className="main__span">{this.state.nameShop}</Link>
+                        {/* <Link style={{color: "black"}} to="/shop" query={{idShop: 1}} className="main__span">{this.state.nameShop}</Link> */}
+                        <button onClick={() => this.navigationShop(this.state.idShop)} className="btn main__span">{this.state.nameShop}</button>
                     </div>
                     <div className="description">
                         <h3 className="main__label" style={{textDecoration: "underline"}}>Giới thiệu sản phẩm</h3>

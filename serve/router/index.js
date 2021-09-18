@@ -5,8 +5,12 @@ const info = require("./info")
 const shop = require("./shop")
 const product = require("./product")
 const review = require("./review")
+const followProduct = require("./followProduct")
+const followShop = require("./followShop")
 
 function route(app) {
+    app.use('/flShop', followShop)
+    app.use('/flProduct', followProduct)
     app.use('/review', review)
     app.use('/product', product)
     app.use('/shop', shop)

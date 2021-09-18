@@ -83,6 +83,7 @@ class Product extends Component {
                 quantityProduct: addQuantity,
             })
             console.log(createProduct);
+            window.location.reload();
         }
         
     }
@@ -145,6 +146,10 @@ class Product extends Component {
             [name]: value
         })
     }
+    navigationDetail = (e) => {
+        localStorage.setItem('detail', e);
+        this.props.history.push("/detail")
+    }
 
     render() {
         // console.log(this.state);
@@ -157,11 +162,12 @@ class Product extends Component {
                         <td className="main__label">
                             <img style={{height: "100px"}} src={"./images/"+product.imgProduct1} alt="hình ảnh" />
                         </td>
-                        <td className="main__label">{product.priceProduct}</td>
+                        <td className="main__label">{product.priceProduct} VNĐ</td>
                         <td style={{ width: "5%" }}>
-                            <Link to="/detail" style={{color: "black"}}>
+                            <i onClick={() => this.navigationDetail(product._id)} title="Xem chi tiết" className="admin__icon fas fa-eye" ></i>
+                            {/* <Link to="/detail" style={{color: "black"}}>
                                 <i title="Xem chi tiết" className="admin__icon fas fa-eye" ></i>
-                            </Link>
+                            </Link> */}
                         </td>
                         <td style={{ width: "5%" }}>
                             <i onClick={(e) => this.onShowPage(product)} title="Chỉnh sửa" className="admin__icon fas fa-edit"></i>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Banner from "./Banner";
 
-import callApi from "./../../../utils/apiCaller";
+import callApi from "../../../../utils/apiCaller";
 
 class TrangChu extends Component {
   constructor(props) {

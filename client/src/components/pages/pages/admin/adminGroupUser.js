@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 
-import callApi from "../../../utils/apiCaller";
+import callApi from "../../../../utils/apiCaller";
 
 class AdminUser extends Component {
   constructor(props) {

@@ -5,7 +5,8 @@ const shop = require("../controllers/shop/shop")
 
 router.post("/createShop", shop.createShop);
 router.post("/getShop", shop.getShop);
-router.post("/seeShop", shop.seeShop);
+router.post("/getId", shop.getId);
+router.post("/updateShop", shop.updateShop);
 
 
 module.exports = router;

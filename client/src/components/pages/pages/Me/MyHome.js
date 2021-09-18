@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
-import Me from "./Me/Me"
-import Bank from "./Me/Bank"
-import ChangePass from "./Me/ChangePass"
-import Address from "./Me/Address"
+import Me from "./Me"
+import Bank from "./Bank"
+import ChangePass from "./ChangePass"
+import Address from "./Address"
 
 class MyHome extends Component {
 

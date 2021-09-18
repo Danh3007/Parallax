@@ -1,163 +1,187 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
-import Introduce from "./myShop/Introduce"
-import Follower from "./myShop/Follower"
-import Product from "./myShop/Product"
 import callApi from "../../../utils/apiCaller";
 
 class Shop extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     id: "",
-  //     nameShop: "",
-  //     introduce: "",
-  //     address: "",
-  //     follower: [],
-  //     prestige: 0,
-  //     dayCreate: ""
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      id: "",
+      nameShop: "",
+      introduce: "",
+      address: "",
+      prestige: 0,
+      dayCreate: "",
+      follow: false,
+      Fler: [],
+    };
+  }
 
-  // async componentDidMount() {
-  //   const email = localStorage.getItem("email");
-  //   let myShop = await callApi("shop/getShop", "POST", { email: email });
-  //   if (myShop.data !== "NO") {
-  //     this.setState({
-  //       id: myShop.data._id,
-  //       nameShop: myShop.data.nameShop,
-  //       introduce: myShop.data.introduce,
-  //       address: myShop.data.address,
-  //       dayCreate: myShop.data.updatedAt.slice(0,10)
-  //     });
-  //   }
-  // }
+  async componentDidMount() {
+    const shop = localStorage.getItem("shop");
+    const email = localStorage.getItem("email");
+    let myShop = await callApi("shop/getId", "POST", { _id: shop });
+    if (myShop.data !== "NO") {
+      this.setState({
+        id: myShop.data._id,
+        nameShop: myShop.data.nameShop,
+        introduce: myShop.data.introduce,
+        address: myShop.data.address,
+        dayCreate: myShop.data.updatedAt.slice(0, 10),
+      });
+    }
 
-  // onShowForm = (e) => {
-  //   const noneShop = document.getElementById("none-shop");
-  //   const formShop = document.getElementById("form-shop");
-  //   noneShop.style.display = "none";
-  //   formShop.style.display = "block";
-  // };
+    let getProduct = await callApi("product/getproduct", "POST", {idShop: myShop.data._id});
+    this.setState({
+      products: getProduct.data,
+    });
 
-  // onHandleChange = (e) => {
-  //   const target = e.target;
-  //   const name = target.name;
-  //   const value = target.value;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
+    let Fl = await callApi("flShop/get", "POST", {email: email,idShop: this.state.id});
+    if (Fl.data !== "no") {
+      this.setState({
+        follow: true,
+      });
+    }
 
-  // onCreateShop = async (e) => {
-  //   e.preventDefault();
-  //   const formShop = document.getElementById("form-shop");
-  //   const nameShop = formShop.querySelector("#nameShop");
-  //   const message = formShop.querySelector(".form-message");
-  //   nameShop.addEventListener("focus", (e) => {
-  //     message.innerHTML = "";
-  //   });
-  //   if (nameShop.value.length === 0) {
-  //     message.innerHTML = "Mời nhập tên cửa hàng";
-  //   } else {
-  //     console.log(this.state);
-  //     const email = localStorage.getItem("email");
-  //     const name = this.state;
-  //     const createShop = await callApi("shop/createShop", "POST", {
-  //       email: email,
-  //       nameShop: nameShop.value,
-  //       introduce: name.introduce,
-  //       address: name.address,
-  //       prestige: 0,
-  //     });
-  //     console.log(createShop);
-  //   }
-  // };
-  // onHandleChangeShop = (e) => {
-  //   const menu1 = document.querySelector("#menu1")
-  //   const menu2 = document.querySelector("#menu2")
-  //   const menu3 = document.querySelector("#menu3")
-  //   if (e.target === menu1) {
-  //     menu1.style.color = "var(--primary-color)"
-  //     menu2.style.color = "#333"
-  //     menu3.style.color = "#333"
-  //   }
-  //   if (e.target === menu2) {
-  //     menu1.style.color = "#333"
-  //     menu2.style.color = "var(--primary-color)"
-  //     menu3.style.color = "#333"
-  //   }
-  //   if (e.target === menu3) {
-  //     menu1.style.color = "#333"
-  //     menu2.style.color = "#333"
-  //     menu3.style.color = "var(--primary-color)"
-  //   }
-  // }
+    let FlAll = await callApi("flShop/getAll", "POST", {idShop: this.state.id});
+    if (FlAll.data !== "no") {
+      this.setState({
+        Fler: FlAll.data,
+      });
+    }
+  }
+
+  async componentDidUpdate() {
+    let FlAll = await callApi("flShop/getAll", "POST", {idShop: this.state.id});
+    if (FlAll.data !== "no") {
+      this.setState({
+        Fler: FlAll.data,
+      });
+    }
+  }
+
+  onChangeFL = async (e) => {
+    const onFl = document.getElementById("onFlShop");
+    const offFl = document.getElementById("offFlShop");
+    const email = localStorage.getItem("email");
+    const nameUser = localStorage.getItem("nameUser");
+    if (e.target.closest(".btn.main__btn") === onFl) {
+      let Fl = await callApi("flShop/create", "POST", { email: email, nameUser: nameUser, idShop: this.state.id}); // eslint-disable-line
+      // console.log(Fl);
+    }
+    if (e.target.closest(".btn.main__btn") === offFl) {
+      let Fl = await callApi("flShop/remove", "POST", { email: email, idShop: this.state.id}); // eslint-disable-line
+      // console.log(Fl);
+    }
+    this.setState({
+      follow: !this.state.follow,
+    });
+  };
+
+  countFl =(a,b) => {
+    for (let i = 0; i < a.length; i++) {
+        b=b+1
+    }
+    return b
+}
 
   render() {
-    console.log(this.state);
+    let Fl = this.countFl(this.state.Fler,0)
+    // console.log(this.state);
+    let elements = this.state.products.map((product) => {
+      return (
+        <tr key={product._id}>
+          <td className="main__label">{product.nameProduct}</td>
+          <td className="main__label">
+            <img
+              style={{ height: "100px" }}
+              src={"./images/" + product.imgProduct1}
+              alt="hình ảnh"
+            />
+          </td>
+          <td className="main__label">{product.priceProduct} VNĐ</td>
+          <td style={{ width: "5%" }}>
+            <Link to="/detail" style={{ color: "black" }}>
+              <i title="Xem chi tiết" className="admin__icon fas fa-eye"></i>
+            </Link>
+          </td>
+        </tr>
+      );
+    });
     return (
       <div className="container">
         <div className="main">
-          danh
-          {/* <div className="main__caption" style={{ fontWeight: "700" }}>
-            Cửa hàng của bạn
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <label className="main__label">
+              Tên cửa hàng: {this.state.nameShop}
+            </label>
+            {this.state.follow === false ? (
+              <button
+                onClick={this.onChangeFL}
+                id="onFlShop"
+                className="btn main__btn"
+              >
+                Theo dõi
+              </button>
+            ) : (
+              <button
+                style={{ backgroundColor: "gray" }}
+                onClick={this.onChangeFL}
+                id="offFlShop"
+                className="btn main__btn"
+              >
+                Bỏ theo dõi
+              </button>
+            )}
           </div>
           <hr style={{ width: "80%", margin: "10px auto" }} />
-          {this.state.nameShop === "" ? (
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>
-              <div id="none-shop">
-                <h3 className="main__label">Bạn chưa tạo cửa hàng của mình:{" "}</h3>
-                <span className="main__caption--desc">Có muốn tạo cửa hàng</span>
-                <button onClick={this.onShowForm} className="btn main__btn2">Tạo cửa hàng</button>
-              </div>
-              <form id="form-shop" style={{ display: "none" }}>
-                <div className="form-group">
-                  <label className="main__label">Tên cửa hàng{" "}<span style={{ color: "red", fontSize: "14px" }}>* bắt buộc</span></label>
-                  <input id="nameShop" name="nameShop" className="main__input form-control" type="text" />
-                  <span className="form-message"></span>
-                </div>
-                <div className="form-group">
-                  <label className="main__label">Giới thiệu của hàng</label>
-                  <textarea onChange={this.onHandleChange} id="introduce" name="introduce" className="main__input form-control" ></textarea>
-                  <span className="form-message"></span>
-                </div>
-                <div className="form-group">
-                  <label className="main__label">Địa chỉ</label>
-                  <input onChange={this.onHandleChange} id="address" name="address" className="main__input form-control" type="text" />
-                  <span className="form-message"></span>
-                </div>
-                <button onClick={this.onCreateShop} className="btn main__btn">Mở cửa hàng</button>
-              </form>
+              <label className="main__label">Giới thiệu về cửa hàng</label>
+              <p className="main__span">{this.state.introduce}</p>
+              <label className="main__label">Địa chỉ</label>
+              <p className="main__span">{this.state.address}</p>
             </div>
-          ) : (
             <div>
-              <label style={{display: "flex", color: "black"}} className="main__label">Tên cửa hàng: {this.state.nameShop}</label>
-              <ul onClick={this.onHandleChangeShop} className="nav shop__ul">
-                <li className="shop__li nav-item">
-                  <Link id="menu1" style={{color: "var(--primary-color"}} className="shop__text" to="/myShop" >Sản phẩm</Link>
-                </li>
-                <li className="shop__li nav-item">
-                  <Link id="menu2" className="shop__text" to="/myShop/follower" >Người đã theo dõi</Link>
-                </li>
-                <li className="shop__li nav-item">
-                  <Link id="menu3" className="shop__text" to="/myShop/introduce" >Giới thiệu</Link>
-                </li>
-              </ul>
-
-              <div className="shop__body">
-                <Switch>
-                  <Route path="/myShop/follower" component={Follower} />
-                  <Route path="/myShop/introduce" component={Introduce} />
-                  <Route path="/myShop" component={Product} />
-                </Switch>
-              </div>
+              <label className="main__label">Thống kê</label>
+              <p className="main__span">
+                Đã tham gia vào ngày: {this.state.dayCreate}
+              </p>
+              <p className="main__span">Số lượng người theo dõi: {Fl}</p>
+              <p className="main__span">Độ uy tín: {this.state.prestige}</p>
             </div>
-          )} */}
+          </div>
+          <hr style={{ width: "80%", margin: "10px auto" }} />
+          <label className="main__label">Sản phẩm của cửa hàng</label>
+          <table className="admin__table table table-striped">
+            <thead>
+              <tr>
+                <td
+                  style={{ width: "20%", textDecoration: "underline" }}
+                  className="main__label"
+                >
+                  Tên sản phẩm
+                </td>
+                <td
+                  style={{ width: "30%", textDecoration: "underline" }}
+                  className="main__label"
+                >
+                  Hình ảnh
+                </td>
+                <td
+                  style={{ width: "50%", textDecoration: "underline" }}
+                  className="main__label"
+                  colSpan="2"
+                >
+                  giá
+                </td>
+              </tr>
+            </thead>
+            <tbody>{elements}</tbody>
+          </table>
         </div>
-
-        
       </div>
     );
   }

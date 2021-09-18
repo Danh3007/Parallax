@@ -16,9 +16,6 @@ const account_infoSchema = new mongoose.Schema ({
     address: {
         type: String
     },
-    follower: {
-        type: Array
-    },
     prestige: {
         type: Number
     }
