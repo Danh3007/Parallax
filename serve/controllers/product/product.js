@@ -42,6 +42,17 @@ class Pro {
             res.json("NO")
         }
     }
+
+    // update product
+    async update(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        const data = await Product.findByIdAndUpdate({_id: req.body.id},req.body)
+        if (data !== null) {
+            res.json(data)
+        } else {
+            res.json("NO")
+        }
+    }
 }
 
 module.exports = new Pro

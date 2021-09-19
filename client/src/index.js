@@ -6,7 +6,6 @@ import "./css/auth.css"
 import './css/index.css';
 import "./css/layouts.css"
 import "./css/main.css"
-import './css/shopcart.css';
 import App from './App';
 
 ReactDOM.render(

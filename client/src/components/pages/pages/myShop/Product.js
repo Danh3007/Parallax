@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { confirmAlert } from 'react-confirm-alert'; // Import
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
 import callApi from '../../../../utils/apiCaller';
 
@@ -44,7 +43,9 @@ class Product extends Component {
         const formPage = document.querySelector(".admin__form")
         formPage.style.display = "block"
         if (product !== "") {
+            document.getElementById("callAPI").innerHTML = "Sửa"
             this.setState({
+                idProduct: product._id,
                 idList: product.idListProduct,
                 addName: product.nameProduct,
                 addInfor: product.ỉntroduceProduct,
@@ -58,6 +59,7 @@ class Product extends Component {
     onHandleSumbit = async(obj) => {
         obj.preventDefault()
         const form = document.querySelector(".admin__form")
+        const callAPI = document.getElementById("callAPI")
         const addName = await this.check(form,"#addName")
         const addInfor = await this.check(form,"#addInfor")
         const addPrice = await this.check(form,"#addPrice")
@@ -66,26 +68,47 @@ class Product extends Component {
         const addImg1 = await this.checkImage(form,"#addImg1")
         const addImg2 = await this.checkImage(form,"#addImg2")
         const addImg3 = await this.checkImage(form,"#addImg3")
+        console.log(callAPI);
         if (addName !== undefined && addInfor !== undefined && addPrice !== undefined && addSale !== undefined && addQuantity !== undefined && addImg1 !== undefined && addImg2 !== undefined && addImg3 !== undefined) {
-            const createProduct = await callApi("product/createProduct", "POST", {
-                idListProduct: this.state.idList,
-                idShop: this.state.idShop,
-                nameProduct: addName,
-                ỉntroduceProduct: addInfor,
-                imgProduct1: addImg1.name,
-                addressImg1: addImg1,
-                imgProduct2: addImg2.name,
-                addressImg2: addImg2,
-                imgProduct3: addImg3.name,
-                addressImg3: addImg3,
-                priceProduct: addPrice,
-                saleProduct: addSale,
-                quantityProduct: addQuantity,
-            })
-            console.log(createProduct);
-            window.location.reload();
+            if (callAPI.innerHTML === "Sửa") {
+                const updateProduct = await callApi("product/update", "POST", {
+                    id: this.state.idProduct,
+                    idListProduct: this.state.idList,
+                    idShop: this.state.idShop,
+                    nameProduct: addName,
+                    ỉntroduceProduct: addInfor,
+                    imgProduct1: addImg1.name,
+                    addressImg1: addImg1,
+                    imgProduct2: addImg2.name,
+                    addressImg2: addImg2,
+                    imgProduct3: addImg3.name,
+                    addressImg3: addImg3,
+                    priceProduct: addPrice,
+                    saleProduct: addSale,
+                    quantityProduct: addQuantity,
+                })
+                console.log(updateProduct);
+                window.location.reload();
+            } else {
+                const createProduct = await callApi("product/createProduct", "POST", {
+                    idListProduct: this.state.idList,
+                    idShop: this.state.idShop,
+                    nameProduct: addName,
+                    ỉntroduceProduct: addInfor,
+                    imgProduct1: addImg1.name,
+                    addressImg1: addImg1,
+                    imgProduct2: addImg2.name,
+                    addressImg2: addImg2,
+                    imgProduct3: addImg3.name,
+                    addressImg3: addImg3,
+                    priceProduct: addPrice,
+                    saleProduct: addSale,
+                    quantityProduct: addQuantity,
+                })
+                console.log(createProduct);
+                window.location.reload();
+            }
         }
-        
     }
     check = async(form,element) => {
         const obj = form.querySelector(element)

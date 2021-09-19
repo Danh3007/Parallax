@@ -25,6 +25,11 @@ button:focus {
 .btn:hover {
   opacity: 0.8;
 }
+.btn__disable {
+  opacity: 1!important;
+  background-color: grey!important;
+  cursor: default!important;
+}
 .main {
   margin-top: 20px;
   min-height: 500px;
@@ -194,6 +199,9 @@ button:focus {
   .main__btn {
     font-size: 18px;
   }
+  .main__span {
+    font-size: 16px;
+  }
 }
 /* tablet */
 
@@ -222,6 +230,9 @@ button:focus {
     font-size: 12px;
   }
   .main__btn {
+    font-size: 14px;
+  }
+  .main__span {
     font-size: 14px;
   }
 }

@@ -7,8 +7,10 @@ const product = require("./product")
 const review = require("./review")
 const followProduct = require("./followProduct")
 const followShop = require("./followShop")
+const cart = require("./cart")
 
 function route(app) {
+    app.use('/cart', cart)
     app.use('/flShop', followShop)
     app.use('/flProduct', followProduct)
     app.use('/review', review)

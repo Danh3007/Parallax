@@ -44,6 +44,17 @@ class myShop {
         }
     }
 
+    // remove shop
+    async remove(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        const shop = await Shops.findByIdAndDelete({_id: req.body._id})
+        if (shop !== null) {
+            res.json(shop)
+        } else {
+            res.json("NO")
+        }
+    }
+
 }
 
 module.exports = new myShop

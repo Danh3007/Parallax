@@ -53,12 +53,14 @@ class Shop extends Component {
     }
   }
 
-  async componentDidUpdate() {
-    let FlAll = await callApi("flShop/getAll", "POST", {idShop: this.state.id});
-    if (FlAll.data !== "no") {
-      this.setState({
-        Fler: FlAll.data,
-      });
+  async componentDidUpdate(e) {
+    if (e==="oke") {
+      let FlAll = await callApi("flShop/getAll", "POST", {idShop: this.state.id});
+      if (FlAll.data !== "no") {
+        this.setState({
+          Fler: FlAll.data,
+        });
+      }
     }
   }
 
@@ -69,10 +71,13 @@ class Shop extends Component {
     const nameUser = localStorage.getItem("nameUser");
     if (e.target.closest(".btn.main__btn") === onFl) {
       let Fl = await callApi("flShop/create", "POST", { email: email, nameUser: nameUser, idShop: this.state.id}); // eslint-disable-line
+      this.componentDidUpdate("oke")
+
       // console.log(Fl);
     }
     if (e.target.closest(".btn.main__btn") === offFl) {
       let Fl = await callApi("flShop/remove", "POST", { email: email, idShop: this.state.id}); // eslint-disable-line
+      this.componentDidUpdate("oke")
       // console.log(Fl);
     }
     this.setState({
@@ -85,7 +90,7 @@ class Shop extends Component {
         b=b+1
     }
     return b
-}
+  }
 
   render() {
     let Fl = this.countFl(this.state.Fler,0)

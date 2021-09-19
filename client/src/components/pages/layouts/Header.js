@@ -118,9 +118,6 @@ class header extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/cart"><p>Giỏ hàng</p></Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/detail"><p>Chi tiết</p></Link>
-              </li>
               {user}
             </ul>
           </div>

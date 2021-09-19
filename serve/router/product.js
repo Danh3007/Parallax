@@ -19,5 +19,6 @@ router.post("/createProduct", upload.single("addressImg1","addressImg2","address
 router.post("/Product", product.Product);
 router.post("/getProduct", product.getProduct);
 router.post("/removeProduct", product.removeProduct);
+router.post("/update", product.update);
 
 module.exports = router;

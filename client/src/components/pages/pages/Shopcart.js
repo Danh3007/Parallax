@@ -1,84 +1,128 @@
 import React, { Component } from "react";
+import { confirmAlert } from 'react-confirm-alert'; // Import
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
+import callApi from "../../../utils/apiCaller";
+
 class Shopcart extends Component {
-    render() {
-        return (
-          <div className="container" style={{height: "500px"}}> 
-            <table id="cart" className="table table-hover table-condensed"> 
-              <thead> 
-                <tr> 
-                  <th style={{width: '50%'}}>Tên sản phẩm</th> 
-                  <th style={{width: '10%'}}>Giá</th> 
-                  <th style={{width: '8%'}}>Số lượng</th> 
-                  <th style={{width: '22%'}} className="text-center">Thành tiền</th> 
-                  <th style={{width: '10%'}}> </th> 
-                </tr> 
-              </thead> 
-              <tbody><tr> 
-                  <td data-th="Product"> 
-                    <div className="row"> 
-                      <div className="col-sm-2 hidden-xs"><img src={"./images/list1.png"} style={{ width: '50px', height: '50px' }} alt="logo-shop"  className="img-responsive" width={100} />
-                      </div> 
-                      <div className="col-sm-10"> 
-                        <h4 className="nomargin">Sản phẩm 1</h4> 
-                        <p>Mô tả của sản phẩm 1</p> 
-                      </div> 
-                    </div> 
-                  </td> 
-                  <td data-th="Price">200.000 đ</td> 
-                  <td data-th="Quantity"><input className="form-control text-center" defaultValue={1} type="number" />
-                  </td> 
-                  <td data-th="Subtotal" className="text-center">200.000 đ</td> 
-                  <td className="actions" data-th>
-                    <button className="btn btn-info btn-sm"><i className="fa fa-edit" />
-                    </button> 
-                    <button className="btn btn-danger btn-sm"><i className="far fa-trash-alt" />
-                    </button>
-                  </td> 
-                </tr> 
-                <tr> 
-                  <td data-th="Product"> 
-                    <div className="row"> 
-                      <div className="col-sm-2 hidden-xs"><img src={"./images/list2.png"} style={{ width: '50px', height: '50px' }} alt="logo-shop"  className="img-responsive" width={100} />
-                      </div> 
-                      <div className="col-sm-10"> 
-                        <h4 className="nomargin">Sản phẩm 2</h4> 
-                        <p>Mô tả của sản phẩm 2</p> 
-                      </div> 
-                    </div> 
-                  </td> 
-                  <td data-th="Price">300.000 đ</td> 
-                  <td data-th="Quantity"><input className="form-control text-center" defaultValue={1} type="number" />
-                  </td> 
-                  <td data-th="Subtotal" className="text-center">300.000 đ</td> 
-                  <td className="actions" data-th>
-                    <button className="btn btn-info btn-sm"><i className="fa fa-edit" />
-                    </button> 
-                    
-                    <button className="btn btn-danger btn-sm"><i className="far fa-trash-alt" />
-                    </button>
-                 
-                  </td> 
-                </tr> 
-              </tbody><tfoot> 
-                <tr className="visible-xs"> 
-                  <td className="text-center"><strong>Tổng 200.000 đ</strong>
-                  </td> 
-                </tr> 
-                <tr> 
-                  <td><Link className="nav-link" to="/"><button className="btn btn-warning"><i className="fa fa-angle-left" /> Tiếp tục mua hàng</button></Link>
-                  </td> 
-                  <td colSpan={2} className="hidden-xs"> </td> 
-                  <td className="hidden-xs text-center"><strong>Tổng tiền 500.000 đ</strong>
-                  </td> 
-                  <td><button className="btn btn-success btn-block">Thanh toán <i className="fa fa-angle-right" /></button>
-                  </td> 
-                </tr> 
-              </tfoot> 
-            </table>
-          </div>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: []
+    };
+  }
+
+  async componentDidMount() {
+    const email = localStorage.getItem("email")
+    const cart = await callApi("cart/get", "POST", {email: email})
+    this.setState({
+      cart: cart.data
+    })
+  }
+
+  async componentDidUpdate(e) {
+    if (e==="oke") {
+      const email = localStorage.getItem("email")
+      const cart = await callApi("cart/get", "POST", {email: email})
+      this.setState({
+        cart: cart.data
+      })
+    }
+  }
+
+  removeCart = async(idProduct) => {
+    confirmAlert({
+      title: 'Cảnh báo !!!',
+      message: 'Bạn có muốn xóa ',
+      buttons: [
+        {
+          label: 'Đồng ý',
+          onClick: async() => {
+            const removeCart = await callApi("cart/remove", "POST", {_id:idProduct})
+            console.log(removeCart);
+            window.location.reload()
+          }
+        },
+        {
+          label: 'Không đồng ý',
+          onClick: () => {console.log("quay lại");}
+        }
+      ]
+    })
+  }
+  onHandleChangeQuantity = async(e) => {
+    const idProduct = document.getElementById(e)
+    if (e === idProduct.id) {
+      const changeQuantity = await callApi("cart/change", "POST", {_id: e, quantity: idProduct.value}) // eslint-disable-line
+      // console.log(changeQuantity);
+      this.componentDidUpdate("oke")
+    }
+  }
+
+  total = () => {
+    let total = 0
+    for (let i = 0; i < this.state.cart.length; i++) {
+      total = total + (this.state.cart[i].quantity * this.state.cart[i].priceProduct)
+    }
+    return total
+  }
+
+  navigationDetail = (e) => {
+    localStorage.setItem('detail', e);
+    this.props.history.push("/detail")
 }
-};
+
+  render() {
+    const elements = this.state.cart.map(e=>{
+      return  <tr key={e._id} >
+                <td className="cart__display"> 
+                    <img src={"./images/"+e.imageProduct} alt="img-cart" className="cart__img" />
+                    <h4 style={{marginLeft: "5px"}} className="main__span">{e.nameProduct}</h4>
+                </td>
+                <td className="main__span">{e.priceProduct} VNĐ</td> 
+                <td>
+                  <input id={e._id} onChange={()=>this.onHandleChangeQuantity(e._id)} className="form-control main__input text-center" min={1} defaultValue={e.quantity} type="number" />
+                </td> 
+                <td className="text-center main__span">{e.priceProduct * e.quantity} VNĐ</td> 
+                <td className="actions" data-th>  
+                  <button title="Xem chi tiết" onClick={()=>this.navigationDetail(e.idProduct)} className="btn btn-info"><i className="fa fa-eye" />
+                  </button> 
+                  <button title="Xóa sản phẩm" onClick={()=>this.removeCart(e._id)} style={{marginLeft: "5px"}} className="btn btn-danger"><i className="far fa-trash-alt" />
+                  </button>
+                </td> 
+              </tr>
+    })
+    return  <div className="container">
+              <div className="main">
+                <h3 style={{textAlign: "center"}} className="main__caption">Giỏ hàng của bạn</h3>
+                <hr style={{ width: "80%", margin: "10px auto" }} />
+                <table className="table table-hover table-condensed"> 
+                  <thead> 
+                    <tr> 
+                      <th className="main__label" style={{width: '35%'}}>Tên sản phẩm</th> 
+                      <th className="main__label" style={{width: '20%'}}>Giá</th> 
+                      <th className="main__label" style={{width: '15%'}}>Số lượng</th> 
+                      <th style={{width: '20%'}} className="text-center main__label">Thành tiền</th> 
+                      <th style={{width: '10%'}}> </th> 
+                    </tr> 
+                  </thead> 
+                  <tbody>
+                    {elements}
+                  </tbody>
+
+                  <tfoot> 
+                    <tr> 
+                      <td><Link className="nav-link" to="/"><button className="main__span btn btn-warning"><i className="fa fa-angle-left" /> Tiếp tục mua hàng</button></Link>
+                      </td> 
+                      <td colSpan={2} style={{textAlign: "right"}} className="main__span">Tổng tiền:</td>
+                      <td className="main__span text-center">{this.total()} VNĐ</td> 
+                      <td><button className="main__span btn btn-success btn-block">Thanh toán <i className="fa fa-angle-right" /></button>
+                      </td> 
+                    </tr> 
+                  </tfoot> 
+                </table>
+              </div>
+            </div>;
+  }
+}
 export default Shopcart;

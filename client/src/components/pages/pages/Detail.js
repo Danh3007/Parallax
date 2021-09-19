@@ -59,13 +59,15 @@ class Detail extends Component {
         }
     }
 
-    async componentDidUpdate() {
+    async componentDidUpdate(e) {
+       if (e==="oke") {
         let FLAll = await callApi("flProduct/getAll", "POST", {idProduct: this.state.idProduct})
         if (FLAll.data !== "no") {
             this.setState({
                 Fler: FLAll.data
             })
         }
+       }
     }
 
     onVote = (e) => {
@@ -196,10 +198,12 @@ class Detail extends Component {
         const nameUser = localStorage.getItem("nameUser");
         if (e.target.closest(".btn.main__span") === onHeart) {
             let Fl = await callApi("flProduct/create", "POST", {nameUser: nameUser, email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+            this.componentDidUpdate("oke")
             // console.log(Fl);
         }
         if (e.target.closest(".btn.main__span") === offHeart) {
             let Fl = await callApi("flProduct/remove", "POST", {email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+            this.componentDidUpdate("oke")
             // console.log(Fl);
         }
         this.setState({
@@ -294,8 +298,64 @@ class Detail extends Component {
         }
         return b
     }
+    addCart = async() => {
+        const email = localStorage.getItem("email")
+        let addCart = await callApi("cart/create", "POST", {
+            idProduct: this.state.product._id,
+            nameProduct: this.state.product.nameProduct,
+            imageProduct: this.state.product.imgProduct1,
+            priceProduct: this.state.product.priceProduct-(this.state.product.priceProduct*this.state.product.saleProduct/100),
+            quantity: 1,
+            email: email
+        })
+        // console.log(addCart);
+        this.onNotity(addCart.data.mess, addCart.data.type, addCart.data.duration)
+    }
+
+    // thông báo
+    onNotity = (messNotity='', type="success" ,duration=3000) => {
+        const main = document.getElementById("toast")
+        if (main) {
+            const toast = document.createElement("div")
+
+            // auto Remove
+            const autoRemoveId = setTimeout(()=>{
+                main.removeChild(toast)
+            }, duration + 1000)
+
+            // click Remove
+            toast.onclick = (e) => {
+                if (e.target.closest(".toast__close")) {
+                    main.removeChild(toast)
+                    clearTimeout(autoRemoveId)
+                }
+            }
+
+            const icons = {
+                success:"fa-check-circle",
+                error:"fa-exclamation-triangle"
+            }
+            const icon = icons[type]
+            const delay = (duration / 1000).toFixed(2)
+            toast.classList.add("toast", `toast--${type}`)
+            toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`
+            toast.innerHTML = `
+                <div class="toast__icon">
+                    <i class="fas ${icon}"></i>
+                </div>
+                <div class="toast__body">
+                    <p>${messNotity}</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fas fa-times"></i>
+                </div>
+                `;
+            main.appendChild(toast)
+        }
+    }
 
     render() {
+        // console.log(this.state.product);
         const fl = this.countFl(this.state.Fler,0)
         const reviews = this.state.listReview.map((review)=>{ // eslint-disable-line
             if (this.state.temp === 0) {
@@ -317,6 +377,7 @@ class Detail extends Component {
         let total = this.state.product.priceProduct - (this.state.product.priceProduct * this.state.product.saleProduct / 100)
         return (
             <div className="container">
+                <div id="toast"></div>
                 <div className="main">
                     <div className="detail">
                         <div className="detail__imgSrc">
@@ -367,8 +428,12 @@ class Detail extends Component {
                             <h4 style={{color: "red"}} className="main__span">Giá tiền hiện tại: {total} VND</h4>
                             <h4 className="main__span">Còn lại: {this.state.product.quantityProduct} sản phẩm</h4>
                             <br />
-
-                            <button className="btn main__btn" type="submit"><i className="fa fa-shopping-cart" /> Thêm vào giỏ hàng</button>
+                            
+                            {this.state.product.quantityProduct !== 0 ? (
+                                <button onClick={this.addCart} className="btn main__btn" type="submit"><i className="fa fa-shopping-cart" /> Thêm vào giỏ hàng</button>
+                            ):(
+                                <button className="btn main__btn btn__disable" type="submit"><i className="fa fa-shopping-cart" /> Thêm vào giỏ hàng</button>
+                            )}
                             
                             {this.state.heart === false ? (
                                 <button id="onHeart" onClick={this.onChangeHeart} className="btn main__span">
