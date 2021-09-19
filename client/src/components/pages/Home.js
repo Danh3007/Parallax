@@ -6,9 +6,10 @@ import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 // homePage
 import TrangChu from "./pages/homePage/TrangChu";
+import Cart from "./pages/homePage/Shopcart"
+import List from "./pages/homePage/List"
 
 import Detail from "./pages/Detail";
-import Cart from "./pages/Shopcart"
 import Shop from "./pages/Shop"
 // me
 import MyHome from "./pages/Me/MyHome";
@@ -24,6 +25,7 @@ class Home extends Component {
       <div>
         <Header />
         <Switch>
+            <Route path="/list" component={List} />
             <Route path="/shop" component={Shop} />
             <Route path="/myShop" component={MyShop} />
             <Route path="/groupUser" component={GroupUser} />

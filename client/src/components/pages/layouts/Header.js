@@ -116,6 +116,9 @@ class header extends Component {
                 <Link className="nav-link" to="/"><p>Trang chủ</p></Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/list"><p>Danh sách</p></Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/cart"><p>Giỏ hàng</p></Link>
               </li>
               {user}

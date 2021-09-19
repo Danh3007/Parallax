@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; // eslint-disable-line
 
-import callApi from "../../../utils/apiCaller";
+import callApi from "../../../../utils/apiCaller";
 
 class Shopcart extends Component {
   constructor(props) {
