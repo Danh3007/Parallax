@@ -15,7 +15,8 @@ class Product extends Component {
             addInfor: "",
             addPrice: 0,
             addSale: 0,
-            addQuantity: 0
+            addQuantity: 0,
+            selected: ""
         };
     }
     
@@ -34,6 +35,16 @@ class Product extends Component {
         this.setState({
             products: getProduct.data
         })
+    }
+
+    async componentDidUpdate(e) {
+        if (e==="oke") {
+            if (this.state.selected === "asc") {
+                this.state.products.sort(this.asc)
+            } else {
+                this.state.products.sort(this.desc)
+            }
+        }
     }
 
     onShowPage = (product) => {
@@ -174,8 +185,36 @@ class Product extends Component {
         this.props.history.push("/detail")
     }
 
+    onFilter = (e) => {
+        const target = e.target
+        const name = target.name
+        const value = target.value
+        this.setState({
+            [name]: value
+        })
+        this.componentDidUpdate("oke")
+    }
+
+    asc = (a,b) => {
+        if (a.slug < b.slug) {
+            return 1
+        }
+        if (a.slug > b.slug) {
+            return -1
+        }
+        return 0
+    }
+    desc = (a,b) => {
+        if (a.slug > b.slug) {
+            return 1
+        }
+        if (a.slug < b.slug) {
+            return -1
+        }
+        return 0
+    }
+
     render() {
-        // console.log(this.state);
         let product = this.state.listProduct.map(product => {
             return <option key={product._id} value={product._id}>{product.nameProduct}</option>
         })
@@ -205,7 +244,7 @@ class Product extends Component {
                 <div className="admin__option">
                     <div style={{display: "flex"}}>
                     <h3 className="main__label">Sắp xếp theo</h3>
-                    <select onChange={this.onFilter} className="main__select">
+                    <select name="selected" onChange={this.onFilter} className="main__select">
                         <option value="asc">Từ A-Z</option>
                         <option value="desc">Từ Z-A</option>
                     </select>

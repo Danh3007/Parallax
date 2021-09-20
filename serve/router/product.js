@@ -20,5 +20,6 @@ router.post("/Product", product.Product);
 router.post("/getProduct", product.getProduct);
 router.post("/removeProduct", product.removeProduct);
 router.post("/update", product.update);
+router.get("/getAll", product.getAll);
 
 module.exports = router;

@@ -53,6 +53,17 @@ class Pro {
             res.json("NO")
         }
     }
+
+    // getAll product
+    async getAll(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        const data = await Product.find()
+        if (data !== null) {
+            res.json(data)
+        } else {
+            res.json("NO")
+        }
+    }
 }
 
 module.exports = new Pro
