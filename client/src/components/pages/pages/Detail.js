@@ -354,6 +354,14 @@ class Detail extends Component {
         }
     }
 
+    format2 = (n) => {
+        const numberFormat = new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+        return numberFormat.format(n)
+      }
+
     render() {
         // console.log(this.state.product);
         const fl = this.countFl(this.state.Fler,0)
@@ -423,9 +431,9 @@ class Detail extends Component {
                                 <a href="/"><i className="fa fa-star" style={{ color: "#8a8ae4" }} /></a>
                             </div>
                             <hr />
-                            <h4 className="main__span">Giá tiền lúc đầu: <span style={{textDecoration: "line-through"}}>{this.state.product.priceProduct} VNĐ</span></h4>
+                            <h4 className="main__span">Giá tiền lúc đầu: <span style={{textDecoration: "line-through"}}>{this.format2(this.state.product.priceProduct)}</span></h4>
                             <h4 className="main__span">Giảm giá {this.state.product.saleProduct}%</h4>
-                            <h4 style={{color: "red"}} className="main__span">Giá tiền hiện tại: {total} VND</h4>
+                            <h4 style={{color: "red"}} className="main__span">Giá tiền hiện tại: {this.format2(total)}</h4>
                             <h4 className="main__span">Còn lại: {this.state.product.quantityProduct} sản phẩm</h4>
                             <br />
                             

@@ -16,7 +16,7 @@ class Product extends Component {
             addPrice: 0,
             addSale: 0,
             addQuantity: 0,
-            selected: ""
+            selected: "asc"
         };
     }
     
@@ -32,19 +32,10 @@ class Product extends Component {
             idShop: myShop.data._id,
         });
         let getProduct = await callApi("product/getproduct", "POST", {idShop: myShop.data._id})
+        getProduct.data.sort(this.asc)
         this.setState({
             products: getProduct.data
         })
-    }
-
-    async componentDidUpdate(e) {
-        if (e==="oke") {
-            if (this.state.selected === "asc") {
-                this.state.products.sort(this.asc)
-            } else {
-                this.state.products.sort(this.desc)
-            }
-        }
     }
 
     onShowPage = (product) => {
@@ -192,27 +183,40 @@ class Product extends Component {
         this.setState({
             [name]: value
         })
-        this.componentDidUpdate("oke")
+        if (value === "asc") {
+            this.state.products.sort(this.asc)
+        }
+        if (value === "desc") {
+            this.state.products.sort(this.desc)
+        }
     }
 
     asc = (a,b) => {
         if (a.slug < b.slug) {
-            return 1
+            return -1
         }
         if (a.slug > b.slug) {
-            return -1
+            return 1
         }
         return 0
     }
     desc = (a,b) => {
         if (a.slug > b.slug) {
-            return 1
+            return -1
         }
         if (a.slug < b.slug) {
-            return -1
+            return 1
         }
         return 0
     }
+
+    format2 = (n) => {
+        const numberFormat = new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+        return numberFormat.format(n)
+      }
 
     render() {
         let product = this.state.listProduct.map(product => {
@@ -224,7 +228,7 @@ class Product extends Component {
                         <td className="main__label">
                             <img style={{height: "100px"}} src={"./images/"+product.imgProduct1} alt="hình ảnh" />
                         </td>
-                        <td className="main__label">{product.priceProduct} VNĐ</td>
+                        <td className="main__label">{this.format2(product.priceProduct)}</td>
                         <td style={{ width: "5%" }}>
                             <i onClick={() => this.navigationDetail(product._id)} title="Xem chi tiết" className="admin__icon fas fa-eye" ></i>
                             {/* <Link to="/detail" style={{color: "black"}}>

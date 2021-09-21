@@ -11,7 +11,8 @@ class List extends Component {
             products: [],
             start:0,
             end: 3,
-            count:0
+            count:0,
+            selected: ""
         }
     }
 
@@ -49,23 +50,68 @@ class List extends Component {
     }
 
     onDetail = (e) => {
-        localStorage.setItem('shop', e);
+        localStorage.setItem('detail', e);
         this.props.history.push("/detail")
+    }
+    format2 = (n) => {
+        const numberFormat = new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+        });
+        return numberFormat.format(n)
+    }
+    onChangeFilter = (e) => {
+        const target = e.target
+        const name = target.name
+        const value = target.value
+        this.setState({
+            [name]: value
+        })
+        if (value === "priceAsc") {
+            this.state.products.sort(this.PriceAsc)
+        }
+        if (value === "priceDesc") {
+            this.state.products.sort(this.PriceDesc)
+        }
+    }
+    PriceAsc = (a,b) => {
+        if (a.priceProduct < b.priceProduct) {
+            return -1
+        }
+        if (a.priceProduct > b.priceProduct) {
+            return 1
+        }
+        return 0
+    }
+    PriceDesc = (a,b) => {
+        if (a.priceProduct > b.priceProduct) {
+            return -1
+        }
+        if (a.priceProduct < b.priceProduct) {
+            return 1
+        }
+        return 0
     }
 
     render() {
-        console.log(this.state.products);
-        let products = this.state.products.map(e=>{
-            return  <div key={e._id} onClick={()=>this.onDetail(e._id)} className="list__product">
-                        <div className="list__product--img">
-                            <img className="list__img" src="./images/ao.jpg" alt="Hình sản phẩm" />
+        // console.log(this.state.products);
+        let products = this.state.products.map(product=>{
+            return  <li style={{cursor: "pointer"}} title="Xem chi tiết" key={product._id} onClick={()=>this.onDetail(product._id)} className="col-lg-2 col-md-3 col-sm-4">
+                        <div className="card ">
+                        <div className="card__img">
+                            <img className="img__product" src={"./images/"+product.imgProduct1} alt="hình sản phẩm" />
                         </div>
-                        <div className="list__product--text">
-                            <h3 className="list__text--title">{e.nameProduct}</h3>
-                            <p className="list__text--price" style={{color: "#f6904a"}}>đ{e.priceProduct*e.saleProduct}</p>
-                            <p className="list__text"><span style={{textDecoration: "line-through"}}>đ{e.priceProduct}</span>-{e.saleProduct}%</p>
+                        <div className="card__text">
+                            <h6 className="text__product">{product.nameProduct}</h6>
+                            <h6 className="text__priceup"><span className="text__price-sale">{this.format2(product.priceProduct-(product.priceProduct*product.saleProduct/100))}</span></h6>
+                            <h6 className="text__pricedown">
+                            <span className="text__vnd"></span>
+                            <span className="text__price-cost">{this.format2(product.priceProduct)}</span>
+                            <span className="text__percent"> -{product.saleProduct}%</span>
+                            </h6>
                         </div>
-                    </div>
+                        </div>
+                    </li>
         })
         let listProduct = this.state.listArray.map(e=>{
             return <li key={e._id} className="list__li main__span">{e.nameProduct}</li>
@@ -86,13 +132,13 @@ class List extends Component {
                         <hr style={{ width: "80%", margin: "10px auto" }} />
                         <div className="list__SX">
                             <label className="main__span">Sắp xếp theo:</label>
-                            <select className="main__select">
+                            <select name="selected" onChange={this.onChangeFilter} className="main__select">
                                 <option>Giá</option>
-                                <option>Giá từ thấp đến cao</option>
-                                <option>Giá từ cao đến thấp</option>
+                                <option value="priceAsc">Giá từ thấp đến cao</option>
+                                <option value="priceDesc">Giá từ cao đến thấp</option>
                             </select>
                         </div>
-                        <div className="list__SP">
+                        <div style={{margin: "10px auto"}} className="danhchoban row">
                             {products}
                         </div>
                     </article>
@@ -101,5 +147,6 @@ class List extends Component {
         );
     }
 }
+
 
 export default List;
