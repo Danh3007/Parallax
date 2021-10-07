@@ -107,7 +107,11 @@ class Home extends Component {
         let email = await this.checkEmail(formRegister)
         let password = await this.checkPassword(formRegister)
         if (nameUser !== undefined && email !== undefined && password !== undefined) {
-            let messNotity = await callApi("auth/register","POST",{nameUser,email,password})
+            const messNotity = await callApi("auth/register","POST",{nameUser,email,password})
+            if (messNotity.data.type === "success") {
+                console.log(("ok"));
+                const upInfo = await callApi("info","POST",{email: email, gender: 0, birthDay: "1990-01-01"}) // eslint-disable-line
+            }
             // show Notity
             this.onNotity(messNotity.data.mess, messNotity.data.type, messNotity.data.duration)
         }

@@ -16,6 +16,10 @@
 .headerAuth .container {
     height: 100%;
 }
+#hha{
+    text-transform: uppercase;
+}
+/* headerAuth */
 
 /* Body */
 .Auth {
@@ -25,10 +29,9 @@
     width: 900px;
     height: 550px;
     margin: 30px auto;
-    background: var(--white-color);
+    background: white;
     box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
 }
-
 .formAuth {
     position: relative;
     width: 640px;
@@ -39,7 +42,6 @@
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
     padding: 50px 30px 0;
 }
-
 .sub-Auth {
     overflow: hidden;
     position: absolute;
@@ -54,12 +56,10 @@
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-
 .Auth.s--signup .sub-Auth {
     -webkit-transform: translate3d(-640px, 0, 0);
     transform: translate3d(-640px, 0, 0);
 }
-
 .btn-login {
     display: block;
     margin: 0 auto;
@@ -67,7 +67,7 @@
     width: 260px;
     height: 36px;
     border-radius: 30px;
-    color: var(--white-color);
+    color: white;
     background-color: #666666;
     font-size: 15px;
 }
@@ -78,7 +78,7 @@
     width: 260px;
     height: 36px;
     border-radius: 30px;
-    color: var(--white-color);
+    color: white;
     background-color: #666666;
     font-size: 15px;
 }
@@ -89,7 +89,7 @@
     width: 260px;
     height: 36px;
     border-radius: 30px;
-    color: var(--white-color);
+    color: white;
     background-color: blue;
     font-size: 15px;
 }
@@ -116,7 +116,6 @@
     height: 100%;
     padding-top: 360px;
 }
-
 .effect:before {
     content: '';
     position: absolute;
@@ -130,7 +129,6 @@
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-
 .effect:after {
     content: '';
     position: absolute;
@@ -140,12 +138,10 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
 }
-
 .Auth.s--signup .effect:before {
     -webkit-transform: translate3d(640px, 0, 0);
     transform: translate3d(640px, 0, 0);
 }
-
 .effect__text {
     z-index: 2;
     position: absolute;
@@ -160,34 +156,28 @@
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-
 .Auth h2 {
     margin-bottom: 10px;
     font-weight: 700;
     font-size: 2.6rem;
     text-align: center;
 }
-
 .effect__text p {
     font-size: 14px;
     line-height: 1.5;
 }
-
 .Auth.s--signup .effect__text.m--up {
     -webkit-transform: translateX(520px);
     transform: translateX(520px);
 }
-
 .effect__text.m--in {
     -webkit-transform: translateX(-520px);
     transform: translateX(-520px);
 }
-
 .Auth.s--signup .effect__text.m--in {
     -webkit-transform: translateX(0);
     transform: translateX(0);
 }
-
 .effect__btn {
     overflow: hidden;
     z-index: 2;
@@ -204,7 +194,6 @@
 .effect__btn:hover {
     opacity: 0.8;
 }
-
 .effect__btn:after {
     content: '';
     z-index: 2;
@@ -216,7 +205,6 @@
     border: 2px solid #fff;
     border-radius: 30px;
 }
-
 .effect__btn span {
     position: absolute;
     left: 0;
@@ -234,24 +222,20 @@
     transition: transform 1.2s;
     transition: transform 1.2s, -webkit-transform 1.2s;
 }
-
 .effect__btn span.m--in {
     -webkit-transform: translateY(-72px);
     transform: translateY(-72px);
 }
-
 .Auth.s--signup .effect__btn span.m--in {
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
-
 .Auth.s--signup .effect__btn span.m--up {
     -webkit-transform: translateY(72px);
     transform: translateY(72px);
 }
-
 .Auth label {
-    color: var(--text-color);
+    color: #333;
     opacity: 0.5;
     display: block;
     width: 260px;
@@ -259,7 +243,6 @@
     text-align: center;
     font-size: 1.6rem;
 }
-
 .Auth .form-control {
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.4);
@@ -275,11 +258,9 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.4);
     box-shadow: none;
 }
-
-
 .forgot-pass {
     margin-top: 15px;
-    color: var(--text-color);
+    color: #333;
     opacity: 0.5;
     display: block;
     width: 260px;
@@ -287,12 +268,10 @@
     text-align: center;
     font-size: 1.6rem;
 }
-
 .sign-in {
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
-
 .Auth.s--signup .sign-in {
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -301,101 +280,17 @@
     -webkit-transform: translate3d(640px, 0, 0);
     transform: translate3d(640px, 0, 0);
 }
-
 .sign-up {
     -webkit-transform: translate3d(-900px, 0, 0);
     transform: translate3d(-900px, 0, 0);
 }
-
 .Auth.s--signup .sign-up {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+/* body */
 
-.form-control.invalid {
-    border-color: red;
-}
-.form-message {
-    color: red;
-    font-size: 1.4rem;
-}
-
-/* Thong bao */
-#toast {
-    position: absolute;
-    z-index: 30;
-    top: 32px;
-    right: 32px;
-}
-
-.toast {
-    display: flex;
-    background-color: white;
-    align-items: center;
-    border-left: 4px solid;
-    padding: 16px 0;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
-    min-width: 400px;
-    max-width: 460px;
-    transition: all linear 3s;
-    
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(calc(100% + 32px));
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-    }
-}
-
-.toast + .toast {
-    margin-top: 16px;
-}
-.toast--success {
-    border-color: #47d864;
-}
-.toast--error {
-    border-color: #ff623d;
-}
-
-.toast--success .toast__icon {
-    color: #47d864;
-}
-.toast--error .toast__icon {
-    color: #ff623d;
-}
-.toast__body p {
-    font-size: 2.0rem;
-    margin: 0 auto;
-}
-.toast__body {
-    flex-grow: 1;
-}
-
-.toast__icon,
-.toast__close {
-    padding: 0 20px;
-}
-
-.toast__icon {
-    font-size: 2.0rem;
-}
-.toast__close {
-    font-size: 1.8rem;
-    color: rgba(0, 0, 0, 0.4);
-}
-
-
+/* tablet */
 @media (max-width: 991.5px) {
     .Auth,
     .sub-Auth{
@@ -423,6 +318,9 @@
         line-height: 1.5;
     }
 }
+/* tablet */
+
+/* phone */
 @media (max-width: 767.5px) {
     .Auth,
     .sub-Auth{
@@ -444,4 +342,5 @@
         display: block;
     }
 }
+/* phone */
 
