@@ -16,6 +16,9 @@
 .headerAuth .container {
     height: 100%;
 }
+#hha{
+    text-transform: uppercase;
+}
 /* headerAuth */
 
 /* Body */

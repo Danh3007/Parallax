@@ -1,3 +1,4 @@
+
 /* search */
 .search {
   position: absolute;
@@ -128,7 +129,7 @@ header .navigation ul {
 }
 header .navigation p {
   margin-left: 15px;
-  font-size: 20px;
+  font-size: 15px;
   color: rgb(100, 100, 100);
   font-weight: 500;
   margin-top: 10px;
@@ -194,13 +195,9 @@ header .navigation p:hover {
 
 /* footer */
 .footer-area {
-  padding-top: 10px;
-  padding-bottom: 0px;
-  background-color: #ffffff;
-  margin-top: 10px;
+  background-color: #f8f9fa;
 }
 .footer-area .container {
-  position: relative;
   z-index: 1;
 }
 .footer-area h3 {
@@ -235,7 +232,7 @@ header .navigation p:hover {
   color: rgb(100, 100, 100);
 }
 .footer-area p a:hover {
-  color: #000000;
+  color: #707070;
 }
 .f-social {
   padding-bottom: 10px;
@@ -256,7 +253,7 @@ header .navigation p:hover {
 .copyright {
   position: relative;
   display: block;
-  background-color: #010101;
+  background-color: #f8f9fa;
   border-top: 1px solid rgba(207, 166, 113);
   border-top-left-radius: 70px;
   border-bottom-right-radius: 70px;
