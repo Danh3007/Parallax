@@ -68,6 +68,9 @@ class header extends Component {
                         <Link className="dropdown__menu--item" to="/myShop">Cửa hàng của bạn</Link>
                       </li>
                       <li className="nav-item">
+                        <Link className="dropdown__menu--item" to="/cart">Giỏ hàng</Link>
+                      </li>
+                      <li className="nav-item">
                         <a onClick={this.onLogOut} className="dropdown__menu--item" href="/">Đăng xuất</a>
                       </li>
                     </div>
@@ -117,9 +120,6 @@ class header extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/list"><p>Danh sách</p></Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cart"><p>Giỏ hàng</p></Link>
               </li>
               {user}
             </ul>

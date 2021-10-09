@@ -42,6 +42,15 @@ class MyCart {
         }
     }
 
+    // removeAll cart
+    async removeAll(req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        let data = await Cart.deleteMany({email: req.body.email})
+        if (data !== null) {
+            res.json("oke")
+        }
+    }
+
     // change cart
     async change(req, res) {
         res.header('Access-Control-Allow-Origin', '*');

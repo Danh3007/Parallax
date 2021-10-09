@@ -71,6 +71,11 @@ class Shopcart extends Component {
     localStorage.setItem('detail', e);
     this.props.history.push("/detail")
 }
+  onSubmit = async(e) => {
+    const email = localStorage.getItem("email")
+    const submitCart = await callApi("cart/removeAll", "POST", {email}) // eslint-disable-line
+    window.location.reload()
+  }
 
   render() {
     const elements = this.state.cart.map(e=>{
@@ -116,7 +121,7 @@ class Shopcart extends Component {
                       </td> 
                       <td colSpan={2} style={{textAlign: "right"}} className="main__span">Tổng tiền:</td>
                       <td className="main__span text-center">{this.total()} VNĐ</td> 
-                      <td><button className="main__span btn btn-success btn-block">Thanh toán <i className="fa fa-angle-right" /></button>
+                      <td><button onClick={this.onSubmit} className="main__span btn btn-success btn-block">Thanh toán <i className="fa fa-angle-right" /></button>
                       </td> 
                     </tr> 
                   </tfoot> 

@@ -161,33 +161,37 @@ class Detail extends Component {
         const content = form.querySelector("#content")
         const messStar = voteStar.parentElement.querySelector(".form-message")
         const mess = content.parentElement.querySelector(".form-message")
-        voteStar.addEventListener("click", (e) => {
-            messStar.innerHTML = ""
-        }, true)
-        content.addEventListener("focus", (e) => {
-            mess.innerHTML = ""
-        }, true)
-        if (content.value.length === 0 && this.state.star===0) {
-            mess.innerHTML = "Nhập nội dung"
-            messStar.innerHTML = "Chọn sao đánh giá"
-        } else if (content.value.length !== 0 && this.state.star===0) {
-            mess.innerHTML = ""
-            messStar.innerHTML = "Chọn sao đánh giá"
-        } else if (content.value.length === 0 && this.state.star!==0) {
-            mess.innerHTML = "Nhập nội dung"
-            messStar.innerHTML = ""
+        const email = localStorage.getItem("email");
+        if (email!==null) {
+            voteStar.addEventListener("click", (e) => {
+                messStar.innerHTML = ""
+            }, true)
+            content.addEventListener("focus", (e) => {
+                mess.innerHTML = ""
+            }, true)
+            if (content.value.length === 0 && this.state.star===0) {
+                mess.innerHTML = "Nhập nội dung"
+                messStar.innerHTML = "Chọn sao đánh giá"
+            } else if (content.value.length !== 0 && this.state.star===0) {
+                mess.innerHTML = ""
+                messStar.innerHTML = "Chọn sao đánh giá"
+            } else if (content.value.length === 0 && this.state.star!==0) {
+                mess.innerHTML = "Nhập nội dung"
+                messStar.innerHTML = ""
+            } else {
+                const nameUser = localStorage.getItem("nameUser");
+                const createPost = await callApi("review/create", "POST", {
+                    nameUser: nameUser,
+                    email: email,
+                    idProduct: this.state.idProduct,
+                    star: this.state.star,
+                    content: content.value
+                })
+                console.log(createPost);
+                window.location.reload();
+            }
         } else {
-            const email = localStorage.getItem("email");
-            const nameUser = localStorage.getItem("nameUser");
-            const createPost = await callApi("review/create", "POST", {
-                nameUser: nameUser,
-                email: email,
-                idProduct: this.state.idProduct,
-                star: this.state.star,
-                content: content.value
-            })
-            console.log(createPost);
-            window.location.reload();
+            this.onNotity("Đăng nhập mới thực hiện được tính năng này!", "error", 3000)
         }
     }
 
@@ -196,19 +200,23 @@ class Detail extends Component {
         const offHeart = document.getElementById("offHeart")
         const email = localStorage.getItem("email");
         const nameUser = localStorage.getItem("nameUser");
-        if (e.target.closest(".btn.main__span") === onHeart) {
-            let Fl = await callApi("flProduct/create", "POST", {nameUser: nameUser, email: email, idProduct: this.state.idProduct}) // eslint-disable-line
-            this.componentDidUpdate("oke")
-            // console.log(Fl);
+        if (email!==null) {
+            if (e.target.closest(".btn.main__span") === onHeart) {
+                let Fl = await callApi("flProduct/create", "POST", {nameUser: nameUser, email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+                this.componentDidUpdate("oke")
+                // console.log(Fl);
+            }
+            if (e.target.closest(".btn.main__span") === offHeart) {
+                let Fl = await callApi("flProduct/remove", "POST", {email: email, idProduct: this.state.idProduct}) // eslint-disable-line
+                this.componentDidUpdate("oke")
+                // console.log(Fl);
+            }
+            this.setState({
+                heart: !this.state.heart
+            })
+        } else {
+            this.onNotity("Đăng nhập mới thực hiện được tính năng này!", "error", 3000)
         }
-        if (e.target.closest(".btn.main__span") === offHeart) {
-            let Fl = await callApi("flProduct/remove", "POST", {email: email, idProduct: this.state.idProduct}) // eslint-disable-line
-            this.componentDidUpdate("oke")
-            // console.log(Fl);
-        }
-        this.setState({
-            heart: !this.state.heart
-        })
     }
 
     onHandleVote = () => {
@@ -300,16 +308,21 @@ class Detail extends Component {
     }
     addCart = async() => {
         const email = localStorage.getItem("email")
-        let addCart = await callApi("cart/create", "POST", {
-            idProduct: this.state.product._id,
-            nameProduct: this.state.product.nameProduct,
-            imageProduct: this.state.product.imgProduct1,
-            priceProduct: this.state.product.priceProduct-(this.state.product.priceProduct*this.state.product.saleProduct/100),
-            quantity: 1,
-            email: email
-        })
-        // console.log(addCart);
-        this.onNotity(addCart.data.mess, addCart.data.type, addCart.data.duration)
+        if (email!==null) {
+            let addCart = await callApi("cart/create", "POST", {
+                idProduct: this.state.product._id,
+                nameProduct: this.state.product.nameProduct,
+                imageProduct: this.state.product.imgProduct1,
+                priceProduct: this.state.product.priceProduct-(this.state.product.priceProduct*this.state.product.saleProduct/100),
+                quantity: 1,
+                email: email
+            })
+            // console.log(addCart);
+            this.onNotity(addCart.data.mess, addCart.data.type, addCart.data.duration)
+        } else {
+            this.onNotity("Đăng nhập mới thực hiện được tính năng này!", "error", 3000)
+        }
+        
     }
 
     // thông báo

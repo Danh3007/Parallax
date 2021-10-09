@@ -13,14 +13,25 @@ class AdminPage extends Component {
   }
   async componentDidMount() {
     let product = await callApi("getdata", "GET", null);
+    product = product.data.sort(this.asc)
     this.setState({
-      products: product.data,
+      products: product,
     });
   }
-  onFilter = () => {
-    const option = document.querySelector("select");
-    console.log(option.value);
-  };
+  onFilter = (e) => {
+    const target = e.target
+    const name = target.name
+    const value = target.value
+    this.setState({
+        [name]: value
+    })
+    if (value === "asc") {
+        this.state.products.sort(this.asc)
+    }
+    if (value === "desc") {
+        this.state.products.sort(this.desc)
+    }
+}
 
   onShowPage = async(name) => {
     const showForm = document.querySelector(".admin__form")
@@ -96,6 +107,25 @@ class AdminPage extends Component {
         }
       ]
     });
+  }
+
+  asc = (a,b) => {
+    if (a.slug < b.slug) {
+        return -1
+    }
+    if (a.slug > b.slug) {
+        return 1
+    }
+    return 0
+  }
+  desc = (a,b) => {
+      if (a.slug > b.slug) {
+          return -1
+      }
+      if (a.slug < b.slug) {
+          return 1
+      }
+      return 0
   }
 
   render() {

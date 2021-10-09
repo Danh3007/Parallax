@@ -171,12 +171,12 @@ class Home extends Component {
                         <form action="/" id="form-login">
                             <div className="form-group">
                                 <label>Nhập Email</label>
-                                <input defaultValue="kieu1danh.itc@gmail.com" id="email" type="email" className="form-control" />
+                                <input id="email" type="email" className="form-control" />
                                 <span className="form-message"></span>
                             </div>
                             <div className="form-group">
                                 <label>Nhập Mật Khẩu</label>
-                                <input defaultValue="danh123" id="password" type="password" className="form-control" />
+                                <input id="password" type="password" className="form-control" />
                                 <span className="form-message"></span>
                             </div>
                             <p className="forgot-pass">Quên Mật Khẩu?</p>
