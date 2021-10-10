@@ -409,6 +409,25 @@
   font-size: 14px;
   margin: 0px;
 }
+.list__fill {
+  display: flex;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 1px #ddd4d4;
+  padding: 5px;
+}
+.list__filter {
+  font-size: 14px;
+  padding: 2px 10px;
+  font-weight: 400;
+  border-radius: 10px;
+  flex: auto;
+  margin: 0 auto;
+  height: 30px;
+}
+.list__icon {
+  padding: 8px;
+}
 /* list */
 
 /* tablet */
@@ -463,6 +482,12 @@
   }
   .danhchoban {
     margin-top: 1%;
+  }
+  .list__filter {
+    height: 25px;
+  }
+  .list__icon {
+    padding: 6px;
   }
 
   /* myShop */
@@ -559,6 +584,12 @@
     margin-top: -15px;
     padding: 0 5px;
     font-size: 9px;
+  }
+  .list__filter {
+    height: 20px;
+  }
+  .list__icon {
+    padding: 4px;
   }
 
   /* myShop */
