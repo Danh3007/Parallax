@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import FacebookLogin from "react-facebook-login";
 
 import HeaderAuth from './layouts/HeaderAuth';
 import FooterAuth from './layouts/FooterAuth';
-import Facebook from './Facebook';
 import callApi from "./../../utils/apiCaller";
 
 class Home extends Component {
@@ -165,8 +165,26 @@ class Home extends Component {
     //     const Facebook = await callApi("auth/facebook", "GET", null)
     //     console.log(Facebook);
     // }
+    responseFacebook = async(e) => {
+        localStorage.setItem("email",e.email)
+        const Facebook = await callApi("auth/register","POST",{nameUser: e.name, email: e.email, password: e.userID}) // eslint-disable-line
+        const upInfo = await callApi("info","POST",{email: email, gender: 0, birthDay: "1990-01-01"}) // eslint-disable-line
+        setTimeout(()=>{
+            this.props.history.push("/")
+        },1000)
+    };
 
     render() {
+        let fbContent;
+        fbContent = (
+            <FacebookLogin
+                appId="4393586144068354"
+                size="medium"
+                textButton="Đăng nhập với Facebook"
+                fields="name,email,picture"
+                callback={this.responseFacebook}
+            />
+        );
         return (
             <div>
                 <HeaderAuth />
@@ -188,8 +206,8 @@ class Home extends Component {
                             </div>
                             <p className="forgot-pass">Quên Mật Khẩu?</p>
                             <button onClick={this.onSubmitLogin} type="submit" className="btn btn-login">Đăng Nhập</button>
-                            <Facebook />
-                            {/* <button onClick={this.onFacebook} type="button" className="btn btn-fb">Kết nối với Facebook</button> */}
+                            {/* <Facebook /> */}
+                            <div className="btn btn-fb">{fbContent}</div>
                             <div onClick={this.onChaneAuth} type="button" className="btn Change__mobie">Đăng kí tài khoản</div>
                         </form>
                     </div>
