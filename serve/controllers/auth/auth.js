@@ -1,6 +1,8 @@
 
 const Account = require("./../../models/account")
 
+const crypto = require("crypto")
+
 class Auth {
 
     // change Email
@@ -52,7 +54,9 @@ class Auth {
     // login
     async postLogin(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
-        let account = await Account.findOne({email: req.body.email, password: req.body.password})
+        const hash = crypto.createHash("sha256")
+        const pass = hash.update(req.body.password).digest("hex")
+        let account = await Account.findOne({email:req.body.email,password:pass})
         if (account !== null) {
             res.json({
                 mess:"Đăng nhập thành công. Đang điều hướng về trang chủ.",
@@ -71,7 +75,11 @@ class Auth {
     // update password
     async updateLogin(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
-        let account = await Account.findOneAndUpdate({email: req.body.email, password: req.body.password}, {password: req.body.password1})
+        const hash = crypto.createHash("sha256")
+        const pass = hash.update(req.body.password).digest("hex")
+        const hash1 = crypto.createHash("sha256")
+        const pass1 = hash1.update(req.body.password1).digest("hex")
+        let account = await Account.findOneAndUpdate({email: req.body.email, password: pass}, {password: pass1})
         if (account !== null) {
             res.json({
                 mess:"Đổi mật khẩu thành công.",
@@ -90,6 +98,7 @@ class Auth {
     // register
     async postRegister(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
+        const hash = crypto.createHash("sha256")
         let account = await Account.findOne({email: req.body.email})
         if (account !== null) {
             res.json({
@@ -98,7 +107,11 @@ class Auth {
                 duration:3000
             })
         } else {
-            const newAccount = new Account(req.body)
+            const newAccount = new Account({
+                nameUser: req.body.nameUser,
+                email: req.body.email,
+                password: hash.update(req.body.password).digest("hex")
+            })
             newAccount.save()
             res.json({
                 mess: "Đăng ký thành công. Mời đăng nhập.",

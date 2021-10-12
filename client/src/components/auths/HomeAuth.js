@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import HeaderAuth from './layouts/HeaderAuth';
 import FooterAuth from './layouts/FooterAuth';
+import Facebook from './Facebook';
 import callApi from "./../../utils/apiCaller";
 
 class Home extends Component {
@@ -87,7 +88,7 @@ class Home extends Component {
         let email = await this.checkEmail(formLogin)
         let password = await this.checkPassword(formLogin)
         if (email !== undefined && password !== undefined) {
-            const messNotity = await callApi("auth/login","POST",{email,password})
+            const messNotity = await callApi("auth/login","POST",{email: email, password: password})
             // show Notity
             this.onNotity(messNotity.data.mess, messNotity.data.type, messNotity.data.duration)
             // natigato slide
@@ -107,7 +108,7 @@ class Home extends Component {
         let email = await this.checkEmail(formRegister)
         let password = await this.checkPassword(formRegister)
         if (nameUser !== undefined && email !== undefined && password !== undefined) {
-            const messNotity = await callApi("auth/register","POST",{nameUser,email,password})
+            const messNotity = await callApi("auth/register","POST",{nameUser: nameUser, email: email, password: password})
             if (messNotity.data.type === "success") {
                 console.log(("ok"));
                 const upInfo = await callApi("info","POST",{email: email, gender: 0, birthDay: "1990-01-01"}) // eslint-disable-line
@@ -159,6 +160,12 @@ class Home extends Component {
         }
     }
 
+    // onFacebook = async(e) => {
+    //     // this.props.history.push("/auth/facebook")
+    //     const Facebook = await callApi("auth/facebook", "GET", null)
+    //     console.log(Facebook);
+    // }
+
     render() {
         return (
             <div>
@@ -181,7 +188,8 @@ class Home extends Component {
                             </div>
                             <p className="forgot-pass">Quên Mật Khẩu?</p>
                             <button onClick={this.onSubmitLogin} type="submit" className="btn btn-login">Đăng Nhập</button>
-                            <button type="button" className="btn btn-fb">Kết nối với Facebook</button>
+                            <Facebook />
+                            {/* <button onClick={this.onFacebook} type="button" className="btn btn-fb">Kết nối với Facebook</button> */}
                             <div onClick={this.onChaneAuth} type="button" className="btn Change__mobie">Đăng kí tài khoản</div>
                         </form>
                     </div>

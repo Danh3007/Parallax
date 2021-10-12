@@ -7,8 +7,7 @@ const accountSchema = new mongoose.Schema ({
     },
     idProduct: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     imageProduct: {
         type: String,

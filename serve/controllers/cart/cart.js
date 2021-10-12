@@ -6,7 +6,7 @@ class MyCart {
     // create cart
     async create(req, res) {
         res.header('Access-Control-Allow-Origin', '*');
-        let data = await Cart.findOne({idProduct: req.body.idProduct})
+        let data = await Cart.findOne({idProduct:req.body.idProduct,email:req.body.email})
         if (data === null) {
             const myCart = Cart(req.body)
             myCart.save()

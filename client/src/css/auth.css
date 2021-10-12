@@ -85,13 +85,10 @@
 .btn-fb {
     display: block;
     margin: 0 auto;
-    margin-top: 30px;
-    width: 260px;
-    height: 36px;
+    margin-top: 20px;
+}
+.kep-login-facebook.medium {
     border-radius: 30px;
-    color: white;
-    background-color: blue;
-    font-size: 15px;
 }
 .Change__mobie {
     margin: 0 auto;
