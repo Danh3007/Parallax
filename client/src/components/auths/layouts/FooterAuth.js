@@ -28,7 +28,7 @@ class footer extends Component {
                                     <h3>THÔNG TIN LIÊN LẠC</h3>
                                     <ul className="list-inline f-social">
                                         <p><Link className="nav-link" to=""><span className="footer__icon fa fa-phone"></span>+84 987641162</Link></p>
-                                        <p><Link className="nav-link" to=""><span className="footer__icon fa fa-envelope"></span>huyluong.sp@gmail.com</Link></p>
+                                        <p><Link className="nav-link" to=""><span className="footer__icon fa fa-envelope"></span>huyluong.itc@gmail.com</Link></p>
                                     </ul>
                                 </div>
                             </div>

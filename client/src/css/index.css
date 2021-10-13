@@ -54,6 +54,12 @@ button:focus {
   font-size: 22px;
   font-weight: 500;
 }
+.main__label2 {
+  font-size: 22px;
+  font-weight: 500;
+  position: relative;
+  left: -20px;
+}
 .main__input {
   font-size: 18px;
   line-height: 2.5rem;
@@ -187,6 +193,9 @@ button:focus {
   .main__label {
     font-size: 18px;
   }
+  .main__label2 {
+    font-size: 18px;
+  }
   .main__input {
     font-size: 16px;
   }
@@ -219,6 +228,9 @@ button:focus {
   }
   .main__label {
     font-size: 16px;
+  }
+  .main__label2 {
+    font-size: 18px;
   }
   .main__input {
     font-size: 14px;

@@ -192,7 +192,7 @@ class Home extends Component {
                 </div>
                 <main className="Auth">
                     <div className="formAuth sign-in">
-                        <h2>Chào Mừng Quay Lại,</h2>
+                        <h2>Chào Mừng Quay Lại.</h2>
                         <form action="/" id="form-login">
                             <div className="form-group">
                                 <label>Nhập Email</label>
@@ -227,7 +227,7 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="formAuth sign-up">
-                            <h2>Trở Thành Một Thành Viên Của Chúng Tôi,</h2>
+                            <h2>Trở Thành Một Thành Viên Của Chúng Tôi.</h2>
                             <form action="/auth" id="form-register">
                                 <div className="form-group">
                                     <label>Nhập Tên</label>

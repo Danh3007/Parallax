@@ -13,14 +13,14 @@
   flex: 2;
 }
 .myHome__li {
-  font-size: 16px;
-  color: rgb(100, 100, 100);
+  font-size: 18px;
+  color: rgb(129, 129, 129);
+}
+.main__captionname{
+  font-size: 18px;
 }
 .myHome__li :hover {
   color: black;
-}
-.Myhome__icon {
-  color: var(--primary-color);
 }
 /* myHome */
 
@@ -298,7 +298,8 @@
   padding: 10px;
 }
 .vote {
-  margin: 10px;
+  margin: 10px 0px;
+  width: 100%;
 }
 .btn__vote {
   font-size: 18px;
@@ -311,7 +312,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(223, 217, 217);
+  background-color: #f8f9fa;
   margin-bottom: 10px;
 }
 .reivew {

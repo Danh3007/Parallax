@@ -3,15 +3,21 @@
     background-color: #ffffff;
     padding: 20px 0px;
     z-index: 5;
+    position: relative;
+    top: 5%;
 }
 .logoAuth {
+    position: relative;
     width: 200px;
     min-width: 80px;
+    left: 41%;
+    top: 25px;
 }
 .txtAuth {
     font-size: 2.6rem;
-    vertical-align: bottom;
-    margin-left: 20px;
+    position: relative;
+    top: 15px;
+    margin-left: 50px;
 }
 .headerAuth .container {
     height: 100%;
@@ -64,7 +70,7 @@
     display: block;
     margin: 0 auto;
     margin-top: 40px;
-    width: 260px;
+    width: 290px;
     height: 36px;
     border-radius: 30px;
     color: white;
@@ -75,7 +81,7 @@
     display: block;
     margin: 0 auto;
     margin-top: 40px;
-    width: 260px;
+    width: 240px;
     height: 36px;
     border-radius: 30px;
     color: white;
@@ -93,11 +99,11 @@
 .Change__mobie {
     margin: 0 auto;
     margin-top: 40px;
-    width: 260px;
+    width: 240px;
     height: 36px;
     border-radius: 30px;
-    color: #000;
-    background-image: linear-gradient(0,rgb(1, 204, 255),#fff);
+    color: rgb(255, 255, 255);
+    background-color: #666666;
     font-size: 15px;
     justify-content: center;
     display: none;
@@ -314,6 +320,9 @@
         font-size: 12px;
         line-height: 1.5;
     }
+    .btn-login {
+        width: 255px;
+    }
 }
 /* tablet */
 
@@ -337,6 +346,9 @@
     }
     .Change__mobie {
         display: block;
+    }
+    .btn-login {
+        width: 235px;
     }
 }
 /* phone */

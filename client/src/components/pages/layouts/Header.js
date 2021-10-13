@@ -40,7 +40,7 @@ class header extends Component {
         email: userEmail,
       });
     } else {
-      this.state.nameUser.push("Đăng nhập");
+      this.state.nameUser.push("ĐĂNG NHẬP");
       this.setState({ nameUser: this.state.nameUser });
     }
   }
@@ -48,13 +48,13 @@ class header extends Component {
   onLogOut = () => {
     localStorage.removeItem("email");
     this.setState({
-      nameUser: ["Đăng nhập"],
+      nameUser: ["ĐĐĂNG NHẬP"],
     });
   };
 
   render() {
     let user = this.state.nameUser.map((e) => {
-      if (e !== "Đăng nhập") {
+      if (e !== "ĐĂNG NHẬP") {
         if (this.state.email !== "admin@gmail.com") {
           return (
             <div key={e} id="dropdownHeader">
@@ -66,17 +66,17 @@ class header extends Component {
               <div className="dropdown__menu">
                 <li className="nav-item">
                   <Link className="dropdown__menu--item" to="/me">
-                    Quản lí tài khoản
+                    QUẢN LÍ TÀI KHOẢN
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="dropdown__menu--item" to="/myShop">
-                    Cửa hàng của bạn
+                    CỬA HÀNG CỦA BẠN
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="dropdown__menu--item" to="/cart">
-                    Giỏ hàng
+                    GIỎ HÀNG
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -85,7 +85,7 @@ class header extends Component {
                     className="dropdown__menu--item"
                     href="/"
                   >
-                    Đăng xuất
+                    ĐĂNG XUẤT
                   </a>
                 </li>
               </div>
@@ -102,12 +102,12 @@ class header extends Component {
               <div className="dropdown__menu">
                 <li className="nav-item">
                   <Link className="dropdown__menu--item" to="/groupProduct">
-                    Quản lí nhóm ngành
+                    QUẢN LÍ NHÓM NGÀNH
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="dropdown__menu--item" to="/groupUser">
-                    Quản lí người dùng
+                    QUẢN LÍ NGƯỜI DÙNG
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -116,7 +116,7 @@ class header extends Component {
                     className="dropdown__menu--item"
                     href="/"
                   >
-                    Đăng xuất
+                    ĐĂNG XUẤT
                   </a>
                 </li>
               </div>

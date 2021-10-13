@@ -196,6 +196,8 @@ header .navigation p:hover {
 /* footer */
 .footer-area {
   background-color: #f8f9fa;
+  position: relative;
+  top: 10px;
 }
 .footer-area .container {
   z-index: 1;
@@ -295,8 +297,7 @@ header .navigation p:hover {
 .sociFooter,
 .infoFooter {
   flex: 1;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0px 5px;
   margin-top: 10px;
 }
 /* footer */

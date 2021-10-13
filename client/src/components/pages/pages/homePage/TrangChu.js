@@ -82,7 +82,7 @@ class TrangChu extends Component {
         </div>
         <div>
           <div className="homedanhchoban">
-            <div className="main__label text-center">DÀNH CHO BẠN</div>
+            <div className="main__label2 text-center">DÀNH CHO BẠN</div>
             <ul className="danhchoban row" >
               {elements1}
             </ul>

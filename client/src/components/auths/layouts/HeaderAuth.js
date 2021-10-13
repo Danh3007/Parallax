@@ -9,7 +9,6 @@ class HeaderAuth extends Component {
           <Link className="navigato" to="/">
             <img src="./images/logo.png" title="Logo" alt="logo-shop" className="logoAuth"></img>
           </Link>
-          <span className="txtAuth">Đăng Nhập / Đăng Kí</span>
         </div>  
       </header>
     );

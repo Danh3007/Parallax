@@ -444,9 +444,8 @@ class Detail extends Component {
                                 <a href="/"><i className="fa fa-star" style={{ color: "#8a8ae4" }} /></a>
                             </div>
                             <hr />
-                            <h4 className="main__span">Giá tiền lúc đầu: <span style={{textDecoration: "line-through"}}>{this.format2(this.state.product.priceProduct)}</span></h4>
-                            <h4 className="main__span">Giảm giá {this.state.product.saleProduct}%</h4>
-                            <h4 style={{color: "red"}} className="main__span">Giá tiền hiện tại: {this.format2(total)}</h4>
+                            <h4 className="main__span"><span style={{textDecoration: "line-through"}}>{this.format2(this.state.product.priceProduct)}</span><span className="main__span">&nbsp;{this.state.product.saleProduct}%</span></h4>
+                            <h4 style={{color: "red"}} className="main__span">Giá tiền: {this.format2(total)}</h4>
                             <h4 className="main__span">Còn lại: {this.state.product.quantityProduct} sản phẩm</h4>
                             <br />
                             
@@ -481,7 +480,7 @@ class Detail extends Component {
                     <div className="description">
                         <h3 className="main__label" style={{textDecoration: "underline"}}>Đánh giá</h3>
                         <div className="vote">
-                            <h3 className="main__span">Đánh giá của bạn:</h3>
+                            
                             {this.state.me === "no" ? (
                                 <form id="form-vote" className="form__vote">
                                     <div className="form-group">
@@ -496,7 +495,7 @@ class Detail extends Component {
                                         <span className="form-message"></span>
                                     </div>
                                     <div className="form-group">
-                                        <label className="main__label">Viết bình luận</label>
+                                        <label className="main__label"></label>
                                         <textarea id="content" className="main__input form-control"></textarea>
                                         <span className="form-message"></span>
                                     </div>
@@ -536,7 +535,7 @@ class Detail extends Component {
                         </div>
                         <div className="evaluate">
                             <div className="reivews">
-                                <label className="main__label">Đánh giá của người dùng:</label>
+                                <label className="main__label">&nbsp; Đánh giá của người dùng:</label>
                                 <div onClick={this.filterByStar} className="review">
                                     <button id="seeReview5" className="btn main__btn">5 <i className="fas fa-star"></i></button>
                                     <button id="seeReview4" className="btn main__btn">4 <i className="fas fa-star"></i></button>

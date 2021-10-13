@@ -29,10 +29,10 @@ class MyHome extends Component {
                 <div className="main myHome">
                     <aside className="myHome__menu">
                         <ul className="navbar-nav">
-                            <h3 style={{textAlign: "center"}}>Xin chào, <span className="main__caption">{this.state.nameUser}</span></h3>
+                            <h3 style={{textAlign: "center"}}>Xin chào, <span className="main__captionname">{this.state.nameUser}</span></h3>
                             <hr style={{width: "70%", margin: "10px auto"}} />
                             <li className="nav-item">
-                                <Link className="nav-link myHome__li" to="/me"><span className="Myhome__icon fas fa-user"></span> Hồ sơ</Link>
+                                <Link className="nav-link myHome__li" to="/me"><p><span className="Myhome__icon fas fa-user"></span> Hồ sơ</p></Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link myHome__li" to="/me/bank"><p><span className="Myhome__icon fas fa-university"></span> Ngân hàng</p></Link>
